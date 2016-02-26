@@ -11,7 +11,7 @@ body {
     font-style: oblique;
     font-size: 50px;
     position: relative;
-    top: 50px;
+    top: 75px;
 }
 #redStar {
     color:red;
@@ -28,6 +28,16 @@ p {
 }
 #pageIcon {
     position: absolute;
-    top: 60px;
+    top: 80px;
     right: 200px;
+}
+
+#zolbareshetIcon {
+    position: absolute;
+    float: left;
+    top: 15px;
+}
+#content {
+    position: absolute;
+    top: 180px;
 }
