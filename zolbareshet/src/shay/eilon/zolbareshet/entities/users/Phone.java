@@ -10,6 +10,10 @@ public class Phone {
     private String phoneNumber;
     private phoneType type;
 
+    public Phone(){
+        this(null,null,null);
+    }
+
     public Phone(String perfix, String phoneNumber, phoneType type) {
         this.perfix = perfix;
         this.phoneNumber = phoneNumber;

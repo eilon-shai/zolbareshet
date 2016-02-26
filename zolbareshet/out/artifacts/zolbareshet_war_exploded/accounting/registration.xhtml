@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<link rel="stylesheet" type="text/css" href="../resources/css/mystyles.css" media="screen" />
+<div id="pageTitle">Registration Page</div>
+<div id="pageIcon">
+<h:graphicImage library="images" name="people.png" height="100" />
+</div>
+<br/><br/><p>Hello to our registration page, please fill up your personal details<br/>(Fields marked with <span id="redStar">*</span>
+ are <abbr>must</abbr> fields)</p>
+<h:form>
+    <h:message for="loginPanel" style="color:red;" />
+    <h:panelGrid columns="1" id="loginPanel">
+        Enter User Name:
+        <h:inputText id="username" value="#{manager.nickName}" />
+    </h:panelGrid>
+    <h:commandButton value="Login"/>
+</h:form>
+<h:outputText value="#{manager.nickName}" />
+</html>

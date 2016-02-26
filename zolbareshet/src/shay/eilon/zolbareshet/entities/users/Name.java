@@ -7,7 +7,9 @@ public class Name {
     private String firstName;
     private String middleName;
     private String lastName;
-
+    public Name(){
+        this(null,null,null);
+    }
     public Name(String firstName, String middleName, String lastName) {
         this.firstName = firstName;
         this.middleName = middleName;

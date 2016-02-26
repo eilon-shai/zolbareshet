@@ -1,0 +1,33 @@
+body {
+    background-color: #d0e4fe;
+}
+
+#pageTitle {
+    color: orange;
+    text-align: center;
+    border-bottom-width: 8px;
+    border-bottom-style: solid;
+    font-family: "Times New Roman";
+    font-style: oblique;
+    font-size: 50px;
+    position: relative;
+    top: 50px;
+}
+#redStar {
+    color:red;
+    font-size: 30px;
+    position: relative;
+    bottom: -10px;
+    right: 0;
+}
+
+
+p {
+    font-family: "Times New Roman";
+    font-size: 20px;
+}
+#pageIcon {
+    position: absolute;
+    top: 60px;
+    right: 200px;
+}

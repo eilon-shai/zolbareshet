@@ -12,6 +12,9 @@ public class Address {
     private int floorNumber;
     private String zipCode;
 
+    public Address(){
+        this(null,null,null,null,0,0,null);
+    }
     public Address(String state, String city, String region, String street, int streetNumber, int floorNumber, String zipCode) {
         State = state;
         City = city;

@@ -11,11 +11,17 @@ public class UserInfo {
     private gender userGender;
     private Date birthDate;
     private state familyState;
+    private String mailAddress;
 
-    public UserInfo(gender userGender, Date birthDate, state familyState) {
+    public UserInfo(){
+        this(null,null,null,null);
+    }
+
+    public UserInfo(gender userGender, Date birthDate, state familyState, String mailAddress) {
         this.userGender = userGender;
         this.birthDate = birthDate;
         this.familyState = familyState;
+        this.mailAddress=mailAddress;
     }
 
     public gender getUserGender() {

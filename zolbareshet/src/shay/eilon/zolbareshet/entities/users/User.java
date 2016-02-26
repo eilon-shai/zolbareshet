@@ -1,19 +1,27 @@
 package shay.eilon.zolbareshet.entities.users;
 
-/**
- * Created by eilons on 2/23/2016.
- */
+import javax.faces.bean.ManagedBean;
+import java.util.ArrayList;
+
+@ManagedBean
 public abstract class User {
     private int ID;
     private Name name;
     private Address address;
-    private Phone[] phoneNumbers;
+    private ArrayList<Phone> phoneNumbers;
     private Password password;
     private String nickName;
     private UserInfo userInfo;
 
+    public User(){
+        name=new Name();
+        address = new Address();
+        phoneNumbers = new ArrayList<Phone>();
+        password=new Password();
+        userInfo = new UserInfo();
+    }
 
-    public User(int ID, Name name, Address address, Phone[] phoneNumbers, Password password, String nickName, UserInfo userInfo) {
+    public User(int ID, Name name, Address address, ArrayList<Phone> phoneNumbers, Password password, String nickName, UserInfo userInfo) {
         this.ID = ID;
         this.name = name;
         this.address = address;
@@ -47,11 +55,11 @@ public abstract class User {
         this.address = address;
     }
 
-    public Phone[] getPhoneNumbers() {
+    public ArrayList<Phone> getPhoneNumbers() {
         return phoneNumbers;
     }
 
-    public void setPhoneNumbers(Phone[] phoneNumbers) {
+    public void setPhoneNumbers(ArrayList<Phone> phoneNumbers) {
         this.phoneNumbers = phoneNumbers;
     }
 
@@ -77,5 +85,9 @@ public abstract class User {
 
     public void setUserInfo(UserInfo userInfo) {
         this.userInfo = userInfo;
+    }
+
+    public String toString(){
+        return "my name is " + getNickName();
     }
 }

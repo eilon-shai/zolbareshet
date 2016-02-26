@@ -6,6 +6,9 @@ package shay.eilon.zolbareshet.entities.users;
 public class Password {
     private byte[] encryptedPassword;
 
+    public Password(){
+        this(null);
+    }
     public Password(String pass){
         encryptedPassword = encrypt(pass);
     }
