@@ -14,9 +14,10 @@
  are <abbr>must</abbr> fields)</p>
 <h:form>
     <h:message for="loginPanel" style="color:red;" />
-    <h:panelGrid columns="1" id="loginPanel">
-        Enter User Name:
+    <h:panelGrid columns="3" id="loginPanel">
+        First Name:
         <h:inputText id="username" value="#{manager.nickName}" />
+
     </h:panelGrid>
     <h:commandButton value="Login"/>
 </h:form>

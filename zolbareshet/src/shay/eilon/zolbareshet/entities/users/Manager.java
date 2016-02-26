@@ -3,9 +3,7 @@ package shay.eilon.zolbareshet.entities.users;
 import javax.faces.bean.ManagedBean;
 import java.util.ArrayList;
 
-/**
- * Created by eilons on 2/24/2016.
- */
+
 @ManagedBean
 public class Manager extends User{
 

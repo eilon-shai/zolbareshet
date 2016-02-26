@@ -1,8 +1,9 @@
 package shay.eilon.zolbareshet.entities.users;
 
-/**
- * Created by eilons on 2/23/2016.
- */
+import javax.faces.bean.ManagedBean;
+
+
+@ManagedBean
 public class Password {
     private byte[] encryptedPassword;
 

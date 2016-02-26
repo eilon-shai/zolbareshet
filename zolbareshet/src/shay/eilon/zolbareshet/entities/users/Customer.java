@@ -3,11 +3,11 @@ package shay.eilon.zolbareshet.entities.users;
 import shay.eilon.zolbareshet.payments.CreditCard;
 import shay.eilon.zolbareshet.reservations.Chart;
 
+import javax.faces.bean.ManagedBean;
 import java.util.ArrayList;
 
-/**
- * Created by eilons on 2/23/2016.
- */
+
+@ManagedBean
 public class Customer extends User {
     private CreditCard creditCard;
     private Chart chart;

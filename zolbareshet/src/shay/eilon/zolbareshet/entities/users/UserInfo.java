@@ -1,10 +1,9 @@
 package shay.eilon.zolbareshet.entities.users;
 
+import javax.faces.bean.ManagedBean;
 import java.util.Date;
 
-/**
- * Created by eilons on 2/23/2016.
- */
+@ManagedBean
 public class UserInfo {
     public enum gender{MALE,FEMALE};
     public enum state {MARRIED,DEVORCED,SINGLE};
