@@ -17,15 +17,38 @@ import javax.faces.bean.ManagedBean;
  *
  * @author peretzs
  */
-@ManagedBean
 public class CreateTables 
 {
- 
+    final String URLs = "jdbc:postgresql://localhost:5432/" ; 
+    final String SELECT_Q = "CREATE DATABASE Zol5;";
+    public CreateTables ()  
+    {
+    
+    Connection connection = null ; 
+    try {   
+        
+        connection = DriverManager.getConnection(URLs , "postgres" , "shay8080");     
+        PreparedStatement table = connection.prepareStatement(SELECT_Q); 
+        
+        table.executeUpdate();
+        table.closeOnCompletion();
+        }
+         catch (SQLException sqlException)
+        {
+           sqlException.printStackTrace();
+        }
+     finally {
+             try {
+            connection.close();
+        } catch (SQLException sQLException) {
+        }
+             }
+    }
+
     public static void tableCreator()
     {
-            final String CreateDB = "CREATE DATABASE ZolBareshet;" ; 
-    final String URL = "jdbc:postgresql://localhost:5432/ZolBareshet" ; 
-    final String SELECT_Q = "create table Person3 (\n" +
+    final String URL = "jdbc:postgresql://localhost:5432/Zol5" ; 
+    final String SELECT_Q = "   create table Person34 (\n" +
                             "	id numeric(9,0) NOT NULL,\n" +
                             "	first_name VARCHAR(50) NOT NULL,\n" +
                             "	original_surname VARCHAR(50) NOT NULL,\n" +
@@ -35,13 +58,10 @@ public class CreateTables
    
     try (   
         
-        Connection connection = DriverManager.getConnection(URL , "postgres" , "shay8080");
-        //PreparedStatement dataBase = connection.prepareStatement(CreateDB))     
+        Connection connection = DriverManager.getConnection(URL , "postgres" , "shay8080");    
         PreparedStatement table = connection.prepareStatement(SELECT_Q) ) 
        
-        
         {
-           // dataBase.executeUpdate();
             table.executeUpdate();
         }
         
