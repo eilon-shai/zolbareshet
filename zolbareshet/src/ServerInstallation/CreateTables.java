@@ -5,13 +5,15 @@
  */
 package ServerInstallation;
 
+import static java.lang.Class.forName;
+import static java.lang.Thread.sleep;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
-
-
 
 /**
  *
@@ -20,7 +22,13 @@ import javax.faces.bean.ManagedBean;
 public class CreateTables 
 {
     final String URLs = "jdbc:postgresql://localhost:5432/" ; 
-    final String SELECT_Q = "CREATE DATABASE Zol5;";
+    final String SELECT_Q = "CREATE DATABASE \"Zol6\"\n" +
+"  WITH OWNER = postgres\n" +
+"       ENCODING = 'UTF8'\n" +
+"       TABLESPACE = pg_default\n" +
+"       LC_COLLATE = 'English_United States.1252'\n" +
+"       LC_CTYPE = 'English_United States.1252'\n" +
+"       CONNECTION LIMIT = -1;";
     public CreateTables ()  
     {
     
@@ -29,7 +37,6 @@ public class CreateTables
         
         connection = DriverManager.getConnection(URLs , "postgres" , "shay8080");     
         PreparedStatement table = connection.prepareStatement(SELECT_Q); 
-        
         table.executeUpdate();
         table.closeOnCompletion();
         }
@@ -37,17 +44,13 @@ public class CreateTables
         {
            sqlException.printStackTrace();
         }
-     finally {
-             try {
-            connection.close();
-        } catch (SQLException sQLException) {
-        }
-             }
     }
 
     public static void tableCreator()
     {
-    final String URL = "jdbc:postgresql://localhost:5432/Zol5" ; 
+    Connection connection = null ; 
+     Connection connection2 = null ; 
+    final String URL = "jdbc:postgresql://localhost:5432/" ; 
     final String SELECT_Q = "   create table Person34 (\n" +
                             "	id numeric(9,0) NOT NULL,\n" +
                             "	first_name VARCHAR(50) NOT NULL,\n" +
@@ -56,18 +59,19 @@ public class CreateTables
                             "	birth_date date NOT NULL\n" +
                             "	);";
    
-    try (   
-        
-        Connection connection = DriverManager.getConnection(URL , "postgres" , "shay8080");    
-        PreparedStatement table = connection.prepareStatement(SELECT_Q) ) 
-       
+    try {   
+        connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Zol6" , "postgres" , "shay8080");
+        if ( connection.isValid(4000) == true ) 
         {
-            table.executeUpdate();
+        PreparedStatement table = connection.prepareStatement(SELECT_Q) ;
+        table.executeUpdate();
+        table.closeOnCompletion();
         }
-        
+        }
          catch (SQLException sqlException)
         {
            sqlException.printStackTrace();
+           
         }
     }
     
