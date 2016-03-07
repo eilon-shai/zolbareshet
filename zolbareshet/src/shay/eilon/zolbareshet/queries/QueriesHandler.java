@@ -1,7 +1,7 @@
 package shay.eilon.zolbareshet.queries;
 
 /**
- * inteface for classes that responsible of queries to DB
+ * inteface for classes that responsible for queries to DB
  */
 public abstract class QueriesHandler {
 

@@ -1,34 +1,58 @@
 package shay.eilon.zolbareshet.entities.users;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 
 @ManagedBean
+@SessionScoped
 public abstract class User {
+    private final int MAXIMUM_NUMBER_OF_PHONES=4;
     private int ID;
     private Name name;
     private Address address;
-    private ArrayList<Phone> phoneNumbers;
+    private ArrayList<PhoneBean> phonesList;
     private Password password;
     private String nickName;
     private UserInfo userInfo;
 
     public User(){
         name=new Name();
-        address = new Address();
-        phoneNumbers = new ArrayList<Phone>();
-        password=new Password();
+        address=new Address();
+        phonesList = new ArrayList<PhoneBean>();
+        addPhone();
+        password = new Password();
         userInfo = new UserInfo();
     }
 
-    public User(int ID, Name name, Address address, ArrayList<Phone> phoneNumbers, Password password, String nickName, UserInfo userInfo) {
+    public User(int ID, Name name, Address address, ArrayList<PhoneBean> phonesList, Password password, String nickName, UserInfo userInfo) {
         this.ID = ID;
         this.name = name;
         this.address = address;
-        this.phoneNumbers = phoneNumbers;
+        this.phonesList = phonesList;
         this.password = password;
         this.nickName = nickName;
         this.userInfo = userInfo;
+    }
+
+    public void addPhone(){
+        if (phonesList.size()<MAXIMUM_NUMBER_OF_PHONES){
+            phonesList.add(new PhoneBean());
+        }
+    }
+
+    public void removePhone(){
+        if(phonesList.size()>1){
+            phonesList.remove(phonesList.size()-1);
+        }
+    }
+
+    public ArrayList<PhoneBean> getPhonesList() {
+        return phonesList;
+    }
+
+    public void setPhonesList(ArrayList<PhoneBean> phonesList) {
+        this.phonesList = phonesList;
     }
 
     public int getID() {
@@ -55,13 +79,6 @@ public abstract class User {
         this.address = address;
     }
 
-    public ArrayList<Phone> getPhoneNumbers() {
-        return phoneNumbers;
-    }
-
-    public void setPhoneNumbers(ArrayList<Phone> phoneNumbers) {
-        this.phoneNumbers = phoneNumbers;
-    }
 
     public Password getPassword() {
         return password;
@@ -88,6 +105,8 @@ public abstract class User {
     }
 
     public String toString(){
-        return "my name is " + getNickName();
+        return ID + " " + (name!=null?name+" ":"")+(address!=null?address+" ":"")+(userInfo!=null?userInfo+" ":"")+(password!=null?password+" ":"")+(nickName!=null?nickName+" ":"");
     }
+
+   public abstract String register();
 }

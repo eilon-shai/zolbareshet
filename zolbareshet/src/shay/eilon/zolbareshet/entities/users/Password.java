@@ -8,7 +8,7 @@ public class Password {
     private byte[] encryptedPassword;
 
     public Password(){
-        this(null);
+
     }
     public Password(String pass){
         encryptedPassword = encrypt(pass);
@@ -21,5 +21,8 @@ public class Password {
     public byte[] encrypt(String pass){
         byte[] res = null;
         return res;
+    }
+    public String toString(){
+        return "";
     }
 }

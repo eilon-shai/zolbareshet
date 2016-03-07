@@ -1,22 +1,33 @@
 package shay.eilon.zolbareshet.entities.users;
 
 import javax.faces.bean.ManagedBean;
+import java.io.Serializable;
 
 
 @ManagedBean
-public class Name {
+public class Name implements Serializable{
     private String firstName;
-    private String middleName;
     private String lastName;
-    public Name(){
-        this(null,null,null);
+    public Name() {
     }
-    public Name(String firstName, String middleName, String lastName) {
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
-        this.middleName = middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public Name(String firstName, String lastName) {
-        this(firstName,null,lastName);
+
+    public String toString(){
+      return firstName + " "  + lastName;
     }
 }

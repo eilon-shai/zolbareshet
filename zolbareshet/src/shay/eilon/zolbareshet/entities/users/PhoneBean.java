@@ -4,20 +4,37 @@ import javax.faces.bean.ManagedBean;
 
 
 @ManagedBean
-public class Phone {
+public class PhoneBean {
 
-    public enum phoneType {HOME,WORK,CELOLAR};
+    public enum phoneType {Home,Work, Mobile};
     private String perfix;
     private String phoneNumber;
     private phoneType type;
+    private String id;
 
-    public Phone(){
-        this(null,null,null);
+    public PhoneBean(){
+        id="a"+Long.toString(System.currentTimeMillis());
     }
 
-    public Phone(String perfix, String phoneNumber, phoneType type) {
+
+    public PhoneBean(String perfix, String phoneNumber) {
         this.perfix = perfix;
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public phoneType getType() {
+        return type;
+    }
+
+    public void setType(phoneType type) {
         this.type = type;
     }
 
@@ -37,11 +54,6 @@ public class Phone {
         this.phoneNumber = phoneNumber;
     }
 
-    public phoneType getType() {
-        return type;
-    }
 
-    public void setType(phoneType type) {
-        this.type = type;
-    }
+
 }

@@ -2,7 +2,7 @@ body {
     background-color: #d0e4fe;
 }
 
-#pageTitle {
+.pageTitle {
     color: orange;
     text-align: center;
     border-bottom-width: 8px;
@@ -13,7 +13,7 @@ body {
     position: relative;
     top: 75px;
 }
-#redStar {
+.redStar {
     color:red;
     font-size: 30px;
     position: relative;
@@ -26,18 +26,49 @@ p {
     font-family: "Times New Roman";
     font-size: 20px;
 }
-#pageIcon {
+.pageIcon {
     position: absolute;
     top: 80px;
     right: 200px;
 }
 
-#zolbareshetIcon {
+.zolbareshetIcon {
     position: absolute;
     float: left;
     top: 15px;
 }
-#content {
+.content {
     position: absolute;
     top: 180px;
 }
+
+.error {
+    color: red;
+    font-size: 10px;
+}
+.formtytle {
+    color: darkorange;
+    border-bottom-width: 1px;
+    border-bottom-style: dotted;
+    font-size: 15px;
+    font-family: Aharoni;
+    margin-bottom: 1px;
+
+}
+.tip {
+    position: absolute;
+    font:10px/12px Arial,Helvetica,sans-serif; border:solid 1px
+     #666666;
+     padding:2px;
+     z-index:100;
+    visibility:hidden; color:#333333;  background-color:#ffffcc;
+    layer-background-color:#ffffcc;
+
+}
+.visible  {
+    visibility: visible;
+}
+.hidden {
+    visibility: hidden;
+}
+

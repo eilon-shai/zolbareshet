@@ -6,20 +6,17 @@ import java.util.Date;
 @ManagedBean
 public class UserInfo {
     public enum gender{MALE,FEMALE};
-    public enum state {MARRIED,DEVORCED,SINGLE};
     private gender userGender;
     private Date birthDate;
-    private state familyState;
     private String mailAddress;
 
     public UserInfo(){
-        this(null,null,null,null);
+        birthDate=new Date();
     }
 
-    public UserInfo(gender userGender, Date birthDate, state familyState, String mailAddress) {
+    public UserInfo(gender userGender, Date birthDate, String mailAddress) {
         this.userGender = userGender;
         this.birthDate = birthDate;
-        this.familyState = familyState;
         this.mailAddress=mailAddress;
     }
 
@@ -39,11 +36,15 @@ public class UserInfo {
         this.birthDate = birthDate;
     }
 
-    public state getFamilyState() {
-        return familyState;
+    public String getMailAddress() {
+        return mailAddress;
     }
 
-    public void setFamilyState(state familyState) {
-        this.familyState = familyState;
+    public void setMailAddress(String mailAddress) {
+        this.mailAddress = mailAddress;
+    }
+
+    public String toString(){
+        return (userGender!=null?userGender+" ":"")+(birthDate!=null?birthDate+" ":"")+(mailAddress!=null?mailAddress+" ":"");
     }
 }
