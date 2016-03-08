@@ -84,8 +84,8 @@ public abstract class User {
         return password;
     }
 
-    public void setPassword(Password password) {
-        this.password = password;
+    public void setPassword(String password) {
+        this.password = new Password(password);
     }
 
     public String getNickName() {
