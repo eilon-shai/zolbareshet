@@ -28,6 +28,14 @@ public class Customer extends User {
         this.chart = chart;
     }
 
+    public Logger getL() {
+        return l;
+    }
+
+    public void setL(Logger l) {
+        this.l = l;
+    }
+
     public CreditCard getCreditCard() {
         return creditCard;
     }
@@ -45,7 +53,8 @@ public class Customer extends User {
     }
 
     public String register(){
-        Logger.log(Logger.LEVEL.INFO,"TESTING");
+        l.log(Logger.LEVEL.INFO,"TESTING");
+        l.log(LEVEL.DEBUG,"debug testing");
         return"";
     }
 

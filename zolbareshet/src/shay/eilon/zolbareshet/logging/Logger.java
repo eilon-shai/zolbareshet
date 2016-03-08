@@ -1,14 +1,14 @@
 package shay.eilon.zolbareshet.logging;
 
 import shay.eilon.zolbareshet.utilities.Constants;
-import com.esotericsoftware.minlog.*;
+import shay.eilon.zolbareshet.utilities.FileChangeListener;
 
-import javax.annotation.PostConstruct;
-import javax.swing.*;
 import java.io.*;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 
 /**
@@ -16,40 +16,47 @@ import java.util.Properties;
  */
 
 public class Logger {
-    private static InputStream file=null;
-    private static String LOG_FILE_NAME;
+    private  File configFile=null;
+    private  File logFile=null;
+    private  FileInputStream stream;
+    private  String LOG_FILE_NAME;
+    private  String level;
     public enum LEVEL {DEBUG,WARNING,INFO};
-    static {
+    private  Properties prop;
+    private LogFileListener listener;
+
         // GETTING THE PROPERTY FILE
-        Properties prop = new Properties();
+
+    public Logger() {
+
+        prop = new Properties();
+
         try {
             StringBuilder pathToJarFile = new StringBuilder(Logger.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
             String pathToParentDirectory = pathToJarFile.substring(0, pathToJarFile.lastIndexOf("/"));
-            file = new FileInputStream(new File(pathToParentDirectory + "/" + Constants.PROPERTY_FILE_NAME));
-            prop.load(file);
-            LOG_FILE_NAME = prop.getProperty(Constants.LOG_FILE_NAME_PROPERTY,null);
-            if (LOG_FILE_NAME==null){
+            configFile = new File(pathToParentDirectory + "/" + Constants.PROPERTY_FILE_NAME);
+            stream = new FileInputStream(configFile);
+            prop.load(stream);
+            LOG_FILE_NAME = prop.getProperty(Constants.LOG_FILE_NAME_PROPERTY, null);
+            level = prop.getProperty(Constants.DEBUGGING_LEEL_PROPERTY, "INFO");
+            if (LOG_FILE_NAME == null) {
                 throw new Exception();
             }
-            PrintStream	stdout	= null;
             try {
+                Files.createDirectories(Paths.get(LOG_FILE_NAME.substring(0, LOG_FILE_NAME.lastIndexOf('/'))));
                 Files.createFile(Paths.get(LOG_FILE_NAME));
-            }
-            catch (FileAlreadyExistsException ignored) {
+
+            } catch (FileAlreadyExistsException ignored) {
                 //file exists do nothing
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("ERROR: CAN'T CREATE LOG FILE");
                 System.exit(1);
             }
-            try{
+            try {
+                logFile = new File(LOG_FILE_NAME);
+                listener = new LogFileListener(logFile);
 
-                stdout = new PrintStream (new FileOutputStream
-                        (LOG_FILE_NAME));
-                System.setOut(stdout);
-            }
-
-            catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("ERROR: CAN'T OPEN LOG FILE");
                 System.exit(1);
             }
@@ -57,27 +64,69 @@ public class Logger {
             System.out.println("ERROR: CAN'T OPEN CONFIGURATION FILE");
             System.exit(1);
         } finally {
-            if (file != null) {
+            if (configFile != null) {
                 try {
-                    file.close();
+                    stream.close();
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }
-
     }
-    public static void log(LEVEL level,String msg){
-       if (level.equals(LEVEL.INFO)){
-           Log.info(msg);
+
+
+    public  void log(LEVEL lev,String msg){
+        listener.singleupdate();
+        PrintStream stdout = null;
+        try {
+           stdout = new PrintStream(new FileOutputStream
+                    (logFile,true));
+
+        } catch (FileNotFoundException e) {
+            System.out.println("ERROR: CAN'T OPEN LOG FILE");
+            e.printStackTrace();
+            System.exit(1);
+        }
+        if (lev.equals(LEVEL.INFO)){
+            stdout.append(new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz").format(new Date()) + "\t\t|INFO|\t\t"+msg+"\n");
        }
-        else if (level.equals(LEVEL.WARNING)){
-           Log.warn(msg);
+        else if (lev.equals(LEVEL.WARNING)){
+            stdout.append(new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz").format(new Date()) + "\t\t|WARNING|\t\t"+msg+"\n");
        }
         else {
-           Log.debug(msg);
+           if(level.equals(LEVEL.DEBUG.name())) {
+               stdout.append(new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz").format(new Date()) + "\t\t|DEBUG|\t\t"+msg+"\n");
+           }
        }
+        stdout.close();
 
     }
+
+    class LogFileListener extends FileChangeListener {
+        public LogFileListener(File file) {
+            super(file);
+        }
+
+
+
+        @Override
+        public void propertyChanged() {
+            try {
+                stream = new FileInputStream(getFile());
+                prop.load(stream);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            finally {
+                try {
+                    stream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            level = prop.getProperty(Constants.DEBUGGING_LEEL_PROPERTY,"INFO");
+        }
+    }
+
 }

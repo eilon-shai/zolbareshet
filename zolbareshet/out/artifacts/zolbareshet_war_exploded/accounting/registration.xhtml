@@ -145,14 +145,13 @@
                 <h:outputText value="EMAIL"  />
                 <h:inputText id="mailaddress" value="#{customer.userInfo.mailAddress}" required="true" requiredMessage="Please enter your mail address"
                              onmouseout="popUp(event,'E')" onmouseover="popUp(event,'E')">
-                    <f:validateRegex pattern=""/>
                 </h:inputText>
                 <h:message for="mailaddress" styleClass="error"/>
         </h:panelGrid>
 
             <!-- CREDENTIALS SECTION -->
 
-            <p class="formtytle">LOGIN Information</p>
+        <!--    <p class="formtytle">LOGIN Information</p>
             <h:panelGrid columns="16" >
                 <h:outputText value="NickName"  />
                 <h:inputText id="nickname" value="#{customer.nickName}" required="true" requiredMessage="please enter your login nickname"
@@ -165,14 +164,14 @@
                 <h:inputText id="password" value="#{customer.password}" required="true" requiredMessage="Please enter your mail address"
                              validatorMessage="password must be 6 character long contains atleast one digit and one letter" size="8"  onmouseout="popUp(event,'P')" onmouseover="popUp(event,'P')"  >
                     <f:validateLength maximum="6" minimum="6"/>
-                  <!--  <f:validateRegex pattern="\d*\w*(\d|\w)\d*\w"/>-->
+                    <f:validateRegex pattern="\d*\w*(\d|\w)\d*\w"/>
                 </h:inputText>
                 <h:message for="mailaddress" styleClass="error"/>
-            </h:panelGrid>
-
+            </h:panelGrid>-->
+            <h:commandButton value="log" action="#{customer.register}"/>
         <h:commandButton value="Register" onmouseout="popUp(event,'BTN')" onmouseover="popUp(event,'BTN')"/>
     </h:form>
-        <h:commandButton value="log" action="#{customer.register()}"/>
+
         <h:outputText value="#{customer}"/>
 </div>
 
