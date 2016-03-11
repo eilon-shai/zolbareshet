@@ -54,6 +54,7 @@ public class DataBaseInstallation {
          tableCreator(tableUsers);
          
          
+         
      final String  tableParts  =    "   create table Parts (\n" +
                                     "	PartNumber numeric(12,0) NOT NULL,\n" +
                                     "	PartName numeric(12,0) NOT NULL,\n" +

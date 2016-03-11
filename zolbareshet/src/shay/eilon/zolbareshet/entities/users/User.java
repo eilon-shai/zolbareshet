@@ -8,7 +8,7 @@ import java.util.ArrayList;
 @SessionScoped
 public abstract class User {
     private final int MAXIMUM_NUMBER_OF_PHONES=4;
-    private int ID;
+    //private int ID;
     private Name name;
     private Address address;
     private ArrayList<PhoneBean> phonesList;
