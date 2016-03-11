@@ -10,3 +10,8 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+zolbareshet/.idea/libraries/Richfaces_4_2_2.xml
+*.xml
+zolbareshet/.idea/misc.xml
+*.xml
+zolbareshet/out/artifacts/zolbareshet_war_exploded/accounting/foo.xhtml

@@ -1,5 +1,8 @@
 package shay.eilon.zolbareshet.entities.users;
 
+import shay.eilon.zolbareshet.logging.Logger;
+import shay.eilon.zolbareshet.logging.LoggerFactory;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
@@ -15,6 +18,7 @@ public abstract class User {
     private Password password;
     private String nickName;
     private UserInfo userInfo;
+    private Logger logger;
 
     public User(){
         name=new Name();
@@ -23,6 +27,7 @@ public abstract class User {
         addPhone();
         password = new Password();
         userInfo = new UserInfo();
+        logger = LoggerFactory.getLogger();
     }
 
     public User(int ID, Name name, Address address, ArrayList<PhoneBean> phonesList, Password password, String nickName, UserInfo userInfo) {
@@ -102,6 +107,14 @@ public abstract class User {
 
     public void setUserInfo(UserInfo userInfo) {
         this.userInfo = userInfo;
+    }
+
+    public Logger getLogger() {
+        return logger;
+    }
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
     }
 
     public String toString(){
