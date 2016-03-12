@@ -4,194 +4,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <link rel="stylesheet" type="text/css" href="../resources/css/mystyles.css" media="screen" />
-<h:outputScript name="tooltip.js" library="js"/>
-<h:body>
-    <!-- TYTLE -->
-    <div class="zolbareshetIcon">
-        <h:graphicImage library="images" name="zolbareshet.png" />
-    </div>
-    <div class="pageTitle">Registration Page</div>
-    <div class="pageIcon">
-        <h:graphicImage library="images" name="people.png" height="100" />
-    </div>
-    <div class="content">
-        <p>Welcome to ZolBareshet registration page, please fill up your personal details<br/>(Fields marked with <span class="redStar">*</span>
-            are <b>mandatory</b>)
-        </p>
-        <!-- FORM -->
-
-        <h:form>
-
-            <!-- NAME SECTION -->
-
-            <p class="formtytle">Name</p>
-            <h:panelGrid columns="12" id="name">
-                <h:outputText value="First Name"/>
-                <h:inputText id="firstName" required="true" requiredMessage="Please enter your first name" value="#{customer.name.firstName}"
-                             validatorMessage="First name can contain only letters and numbers and must be fewer than 30 characters" onmouseout="popUp(event,'FN')" onmouseover="popUp(event,'FN')">
-                    <f:validateLength maximum="30"/>
-                    <f:validateRegex pattern="\w*\d*"/>
-                </h:inputText><span class="redStar">*</span>
-                <h:message for="firstName" styleClass="error"/>
-                <h:outputText value="Last Name"/>
-                <h:inputText id="lastName" required="true" requiredMessage="Please enter your last name" value="#{customer.name.lastName}"
-                             validatorMessage="Last name can contain only letters and numbers and must be fewer than 30 characters"  onmouseout="popUp(event,'LN')" onmouseover="popUp(event,'LN')">
-                    <f:validateLength maximum="30"/>
-                    <f:validateRegex pattern="\w*\d*"/>
-                </h:inputText><span class="redStar">*</span>
-                <h:message for="lastName" styleClass="error"/>
-            </h:panelGrid>
-
-            <!-- ADDRESS SECTION -->
-
-            <p class="formtytle">Address</p>
-            <h:panelGrid columns="16" id="address" >
-                <h:outputText value="Country"/>
-                <h:selectOneMenu id="country" required="true" requiredMessage="Please select your country" value="#{customer.address.country}"  onmouseout="popUp(event,'CO')" onmouseover="popUp(event,'CO')">
-                    <f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
-                    <f:selectItems value="#{address.countries}" />
-                </h:selectOneMenu><span class="redStar">*</span>
-                <h:message for="country" styleClass="error"/>
-                <h:outputText value="City"/>
-                <h:inputText id="city" required="true"  requiredMessage="Please enter your city" value="#{customer.address.city}"
-                             validatorMessage="city name can contain only letters and numbers and must be fewer than 30 characters"  onmouseout="popUp(event,'CI')" onmouseover="popUp(event,'CI')">
-                    <f:validateLength maximum="30"/>
-                    <f:validateRegex pattern="\w*\d*"/>
-                </h:inputText><span class="redStar">*</span>
-                <h:message for="city" styleClass="error"/>
-                <h:outputText value="Street"/>
-                <h:inputText id="street" required="true" requiredMessage="Please enter your street" value="#{customer.address.street}"
-                             validatorMessage="street name can contain only letters and numbers and must be fewer than 30 characters"  onmouseout="popUp(event,'ST')" onmouseover="popUp(event,'ST')">
-                    <f:validateLength maximum="30"/>
-                    <f:validateRegex pattern="\w*\d*"/>
-                </h:inputText><span class="redStar">*</span>
-                <h:message for="street" styleClass="error"/>
-                <h:outputText value="Street Number"/>
-                <h:inputText id="streetnumber" required="true" requiredMessage="Please enter your street number" value="#{customer.address.streetNumber}"
-                             validatorMessage="street number can contain only positive number in range [1-999]" size="4"  onmouseout="popUp(event,'SN')" onmouseover="popUp(event,'SN')">
-                    <f:validateLength maximum="3"/>
-                    <f:validator validatorId="positiveNumberValidator" />
-                </h:inputText><span class="redStar">*</span>
-                <h:message for="streetnumber" styleClass="error"/>
-            </h:panelGrid>
-            <h:panelGrid columns="16" id="addressb" >
-                <h:outputText value="Floor Number"/>
-                <h:inputText id="floornumber" required="false" value="#{customer.address.floorNumber}"
-                             validatorMessage="floor number name can contain only positive number in range [1-99]" size="3"  onmouseout="popUp(event,'FNU')" onmouseover="popUp(event,'FNU')">
-                    <f:validateLength maximum="2"/>
-                    <f:validator validatorId="positiveNumberValidator" />
-                </h:inputText>
-                <h:message for="floornumber" styleClass="error"/>
-                <h:outputText value="Zip Code"/>
-                <h:inputText id="zipcode" required="false" value="#{customer.address.zipCode}"
-                             validatorMessage="zipcode can contain only digits and must be in range [5-10]"  size="10" onmouseout="popUp(event,'ZIP')" onmouseover="popUp(event,'ZIP')">
-                    <f:validateLength maximum="10"/>
-                    <f:validateRegex pattern="[1-9]{5,10}"/>
-                </h:inputText>
-                <h:message for="zipcode" styleClass="error"/>
-            </h:panelGrid>
-
-            <!-- PHONE SECTION -->
-
-            <p class="formtytle">Phones</p>
-            <h:panelGrid id="phones" columns="14" >
-                <c:forEach var="title" items="#{customer.phonesList}">
-                    <h:inputText id="#{title.id}perfix" required="true" requiredMessage="please enter the perfix"  value="#{title.perfix}"
-                                 validatorMessage="perfix must can contain [2-3] digits" size="4"  onmouseout="popUp(event,'PP')" onmouseover="popUp(event,'PP')">
-                        <f:validateLength maximum="3" minimum="2"/>
-                        <f:validator validatorId="integervalidator" />
-                    </h:inputText>
-                    <h:message for="#{title.id}perfix" styleClass="error"/>
-                    <h:inputText   id="#{title.id}number" required="true" requiredMessage="please enter phone number"  value="#{title.phoneNumber}"
-                                 validatorMessage="phone number can contain [9-12] digits" size="13"  onmouseout="popUp(event,'PN')" onmouseover="popUp(event,'PN')"  >
-                        <f:validateLength maximum="12" minimum="9"/>
-                        <f:validator validatorId="integervalidator" />
-                    </h:inputText>
-                    <h:message for="#{title.id}number" styleClass="error"/>
-                    <h:selectOneMenu  id="#{title.id}type" required="true" requiredMessage="please select phone type" value="#{title.type}" onmouseout="popUp(event,'PT')" onmouseover="popUp(event,'PT')"
-                                      validatorMessage="type can not be null">
-                        <f:selectItem itemLabel="---select---" itemValue=""/>
-                        <f:selectItem itemLabel="HOME" itemValue="Home"/>
-                        <f:selectItem itemLabel="WORK" itemValue="Work"/>
-                        <f:selectItem itemLabel="MOBILE" itemValue="Mobile"/>
-                      <!--  <f:validator validatorId="nullvalidator"/>-->
-                    </h:selectOneMenu><span class="redStar">*</span>
-                    <h:message for="#{title.id}type" styleClass="error"/>
-                </c:forEach>
-            </h:panelGrid>
-            <h:message for="phones" styleClass="error"/>
-            <h:commandButton value="+" action="#{customer.addPhone()}" immediate="true"/>
-            <h:commandButton value="-" action="#{customer.removePhone}" immediate="true"/>
-
-            <!-- PERSONAL DETAILS SECTION -->
-
-            <p class="formtytle">Personal Information</p>
-            <h:panelGrid columns="16" >
-                <h:outputText value="Birthday"  />
-                <h:inputText id="birthday" value="#{customer.userInfo.birthDate}"
-                             validatorMessage="enter date in format [dd/mm/yy]" size="10"  onmouseout="popUp(event,'BD')" onmouseover="popUp(event,'BD')"  >
-                    <f:convertDateTime pattern="dd/mm/yy" />
-                </h:inputText>
-                <h:message for="birthday" styleClass="error"/>
-                <h:outputText value="Gender"  />
-                <h:selectOneMenu id="gender"   value="#{customer.userInfo.userGender}" onmouseout="popUp(event,'G')" onmouseover="popUp(event,'G')">
-                    <f:selectItem itemLabel="---select---" itemValue="null"/>
-                <f:selectItem itemLabel="MALE" itemValue="MALE"/>
-                <f:selectItem itemLabel="FEMALE" itemValue="FEMALE"/>
-                    </h:selectOneMenu>
-                <h:message for="gender" styleClass="error"/>
-                <h:outputText value="EMAIL"  />
-                <h:inputText id="mailaddress" value="#{customer.userInfo.mailAddress}" required="true" requiredMessage="Please enter your mail address"
-                             onmouseout="popUp(event,'E')" onmouseover="popUp(event,'E')">
-                    <f:validateRegex pattern=""/>
-                </h:inputText>
-                <h:message for="mailaddress" styleClass="error"/>
-        </h:panelGrid>
-
-            <!-- CREDENTIALS SECTION -->
-
-            <p class="formtytle">LOGIN Information</p>
-            <h:panelGrid columns="16" >
-                <h:outputText value="NickName"  />
-                <h:inputText id="nickname" value="#{customer.nickName}" required="true" requiredMessage="please enter your login nickname"
-                             validatorMessage="nick name can contain only english letters and digits" size="15"  onmouseout="popUp(event,'NM')" onmouseover="popUp(event,'NM')"  >
-                    <f:validateLength minimum="3" maximum="15"/>
-                    <f:validateRegex pattern="\d*\w*\d*"/>
-                </h:inputText>
-                <h:message for="nickname" styleClass="error"/>
-                <h:outputText value="Password"  />
-                <h:inputText id="password" value="#{customer.password}" required="true" requiredMessage="Please enter your mail address"
-                             validatorMessage="password must be 6 character long contains atleast one digit and one letter" size="8"  onmouseout="popUp(event,'P')" onmouseover="popUp(event,'P')"  >
-                    <f:validateLength maximum="6" minimum="6"/>
-                  <!--  <f:validateRegex pattern="\d*\w*(\d|\w)\d*\w"/>-->
-                </h:inputText>
-                <h:message for="mailaddress" styleClass="error"/>
-            </h:panelGrid>
-
-        <h:commandButton value="Register" onmouseout="popUp(event,'BTN')" onmouseover="popUp(event,'BTN')"/>
-    </h:form>
-        <h:commandButton value="log" action="#{customer.register()}"/>
-        <h:outputText value="#{customer}"/>
+<div id="zolbareshetIcon">
+    <h:graphicImage library="images" name="zolbareshet.png" />
 </div>
+<div id="pageTitle">Registration Page</div>
+<div id="pageIcon">
+<h:graphicImage library="images" name="people.png" height="100" />
+</div>
+<div id="content">
+<p>Hello to our registration page, please fill up your personal details<br/>(Fields marked with <span id="redStar">*</span>
+ are <abbr>must</abbr> fields)</p>
+<h:form>
+    <h:message for="loginPanel" style="color:red;" />
+    <h:panelGrid columns="3" id="loginPanel">
+        First Name:
+        <h:inputText id="username" value="#{manager.nickName}" />
 
-<div id="BTN" class="tip">Press to Submit</div>
-<div id="FN" class="tip">Fill up your first name</div>
-<div id="LN" class="tip">Fill up your last name</div>
-<div id="CO" class="tip">select your country</div>
-<div id="CI" class="tip">Fill up your city </div>
-<div id="ST" class="tip">Fill up your street </div>
-<div id="SN" class="tip">Fill up your street number </div>
-<div id="FNU" class="tip">Fill up your floor number </div>
-<div id="ZIP" class="tip">Fill up your zip code </div>
-<div id="PT" class="tip">Pick the phone types you want to store in your profile</div>
-<div id="PP" class="tip">fill up the phone's perfix</div>
-<div id="PN" class="tip">fill up the phone's number</div>
-<div id="BD" class="tip">fill up your birth date</div>
-    <div id="G" class="tip">select your gender</div>
-    <div id="E" class="tip">fill up your Email address</div>
-    <div id="NM" class="tip">fill up your login nickName</div>
-    <div id="P" class="tip">fill up your password</div>
-</h:body>
-        </html>
+    </h:panelGrid>
+    <h:commandButton value="Login"/>
+</h:form>
+<h:outputText value="#{manager.nickName}" />
+</div>
+</html>

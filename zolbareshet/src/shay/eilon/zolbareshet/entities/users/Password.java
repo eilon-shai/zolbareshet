@@ -1,6 +1,7 @@
 package shay.eilon.zolbareshet.entities.users;
 
 import javax.faces.bean.ManagedBean;
+import javax.swing.*;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,6 +10,7 @@ import java.util.Arrays;
 @ManagedBean
 public class Password {
     private byte[] encryptedPassword;
+    private String password;
     public Password(){
 
     }
@@ -16,9 +18,6 @@ public class Password {
         encryptedPassword = encrypt(pass);
     }
 
-    public byte[] getEncryptedPassword() {
-        return encryptedPassword;
-    }
 
     public static byte[] encrypt(String pass){
         byte[] source = pass.getBytes();
@@ -93,7 +92,24 @@ public class Password {
         return decrypt(a);
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        encryptedPassword=encrypt(password);
+    }
+
     public String toString(){
-        return "";
+        return Arrays.toString(encryptedPassword);
+    }
+
+    public static void main(String[] args) {
+        if(args.length==1){
+            JOptionPane.showMessageDialog(null,encryptedPasswordMaker(args[0]),"Encrypted Password",JOptionPane.PLAIN_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"NO Input Was Givven","Error",JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

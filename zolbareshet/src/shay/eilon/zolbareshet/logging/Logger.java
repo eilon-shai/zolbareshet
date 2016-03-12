@@ -27,7 +27,7 @@ public class Logger {
 
         // GETTING THE PROPERTY FILE
 
-    public Logger() {
+    private Logger() {
 
         prop = new Properties();
 
@@ -127,6 +127,13 @@ public class Logger {
             }
             level = prop.getProperty(Constants.DEBUGGING_LEEL_PROPERTY,"INFO");
         }
+    }
+    public static Logger createLogger(){
+        String callerClassName = new Exception().getStackTrace()[1].getClassName();
+        if (callerClassName.equals(LoggerFactory.class.getName())&& LoggerFactory.logger==null){
+            return new Logger();
+        }
+        return null;
     }
 
 }

@@ -3,6 +3,7 @@ package shay.eilon.zolbareshet.entities.users;
 
 import com.esotericsoftware.minlog.Log;
 import shay.eilon.zolbareshet.logging.Logger;
+import shay.eilon.zolbareshet.logging.LoggerFactory;
 import shay.eilon.zolbareshet.payments.CreditCard;
 import shay.eilon.zolbareshet.reservations.Chart;
 import static shay.eilon.zolbareshet.logging.Logger.*;//
@@ -17,7 +18,8 @@ import java.util.ArrayList;
 public class Customer extends User {
     private CreditCard creditCard;
     private Chart chart;
-    private Logger l= new Logger();
+    private Logger logger= LoggerFactory.getLogger();
+
 
     public Customer(){
         super();
@@ -26,14 +28,6 @@ public class Customer extends User {
         super(ID, name, address, phoneNumbers, password, nickName, userInfo);
         this.creditCard = creditCard;
         this.chart = chart;
-    }
-
-    public Logger getL() {
-        return l;
-    }
-
-    public void setL(Logger l) {
-        this.l = l;
     }
 
     public CreditCard getCreditCard() {
@@ -53,9 +47,9 @@ public class Customer extends User {
     }
 
     public String register(){
-        l.log(Logger.LEVEL.INFO,"TESTING");
-        l.log(LEVEL.DEBUG,"debug testing");
-        return"";
+        logger.log(Logger.LEVEL.INFO,"TESTING");
+        logger.log(LEVEL.DEBUG,"debug result");
+        return"result";
     }
 
 
