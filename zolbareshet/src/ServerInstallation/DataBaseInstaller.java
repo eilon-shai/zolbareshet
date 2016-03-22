@@ -27,17 +27,20 @@ public final class DataBaseInstaller
         return new String(encoded, encoding);
     }
     
-    public static void RunQuery (String path , String DataBaseName) throws IOException
+    public static void RunQuery (String path ) throws IOException
     {
     Connection connection = null ; 
-    Connection connection2 = null ; 
-    final String Coding = "UTF8" ; 
-    final String URL = "jdbc:postgresql://localhost:5432/" ; 
+    char slash = '/' ;
+    final String Coding = getInstallationConfig.getCoding() ; 
+    final String URL = getInstallationConfig.getURL() ; 
     final String RunQuery = ReadQuery(path , Coding);
-   
+    final String dataBaseName = getInstallationConfig.getDataBaseName() ; 
+    final String DataBaseUserName = getInstallationConfig.getDataBaseUserName();
+    final String Password = getInstallationConfig.getDataBasePassword(); 
     try {   
         
-        connection = DriverManager.getConnection(URL + DataBaseName , "postgres" , "shay8080");
+        connection = DriverManager.getConnection(URL  , DataBaseUserName , Password);
+        //connection = DriverManager.getConnection(URL+slash+dataBaseName , DataBaseUserName , Password);
         if ( connection.isValid(4000) == true ) 
         {
         System.out.println(RunQuery);     
@@ -52,33 +55,25 @@ public final class DataBaseInstaller
            
         }
      System.out.println("----------------------  Data Base Created !!  ---------------------" );
-     
-
          
     }
     
-    
-    
-
-    
-        public static void tableCreator(String SELECT_Q)
+    public static void tableCreator(String SELECT_Q)
     {
-    Connection connection = null ; 
-     Connection connection2 = null ; 
-    final String URL = "jdbc:postgresql://localhost:5432/" ; 
+    Connection connection = null ;  
+    final String URL = getInstallationConfig.getURL() ; 
     
-
-   
     try {   
 
-        connection2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/", "postgres" , "shay8080") ;
-        connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Zol_10" , "postgres" , "shay8080");
-       // connection.getAutoCommit();
+        char slash = '/' ;
+        connection = DriverManager.getConnection( "jdbc:postgresql://localhost:5432/ZolBareshetDataBase" , getInstallationConfig.getDataBaseUserName() , getInstallationConfig.getDataBasePassword());
+        connection.getAutoCommit();
         if ( connection.isValid(4000) == true ) 
         {
         PreparedStatement table = connection.prepareStatement(SELECT_Q) ;
         table.executeUpdate();
         table.closeOnCompletion();
+         System.out.println("----------------------1 second - Table Creator DONE !!!---------------------" );
         }
         }
         
@@ -91,8 +86,5 @@ public final class DataBaseInstaller
     System.out.println("----------------------Table Creator DONE !!!---------------------" );
     }
     
-   ///TTTTT
-    
-    
-    
+  
 }

@@ -7,30 +7,15 @@ package ServerInstallation;
 
 import static ServerInstallation.DataBaseInstaller.tableCreator;
 import java.io.IOException;
-import static java.lang.Thread.sleep;
-import java.sql.*;
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException; 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-/**
- *
- * @author peretzs
- */
+
 public class DataBaseInstallation {
   
    public static void main (String args []) throws IOException
     {
-        final String DataBaseName = "Zol_10" ; 
-        
+ 
         final String DataBasePath   = "C:\\ZolBareshert_GIT6\\Queries\\CREATE_DATABASE.sql" ; 
-       DataBaseInstaller.RunQuery(DataBasePath , "");
-       
-       
+        DataBaseInstaller.RunQuery(DataBasePath );
+        
         final String tableUsers  =  "create table Users (\n" +
                                     "	UserName    VARCHAR(20) NOT NULL,\n" +
                                     "	FirstName   VARCHAR(50) NOT NULL,\n" +
@@ -49,12 +34,8 @@ public class DataBaseInstallation {
                                     "	\n" +
                                     "	PRIMARY KEY (UserName)\n" +
                                     ");";
-         
-  
-         tableCreator(tableUsers);
-         
-         
-     final String  tableParts  =    "   create table Parts (\n" +
+          System.out.println("ServerInstallation.DataBaseInstallation.main()" + tableUsers  );
+        final String  tableParts  =    "   create table Parts (\n" +
                                     "	PartNumber numeric(12,0) NOT NULL,\n" +
                                     "	PartName numeric(12,0) NOT NULL,\n" +
                                     "	Description Text  NOT NULL,\n" +
@@ -65,13 +46,8 @@ public class DataBaseInstallation {
                                     "	PRIMARY KEY (PartNumber) \n" +
                                     "	 \n" +
                                     "	);";
-         
-         
-         tableCreator(tableParts);   
-       
-        
-         
-    final String  tableClientsPayment =     "   create table ClientsPayment (\n" +
+            
+        final String  tableClientsPayment =     "   create table ClientsPayment (\n" +
                                             "	UserName VARCHAR(20) NOT NULL,\n" +
                                             "	UserID numeric(10,0) NOT NULL,\n" +
                                             "	CardNumber  numeric(16,0) NOT NULL,\n" +
@@ -80,13 +56,8 @@ public class DataBaseInstallation {
                                             "	PRIMARY KEY (UserName)\n" +
                                             "	 \n" +
                                             "	);";
-         
-         
-     tableCreator(tableClientsPayment);    
-     
-     
-         
-    final String tableOrders =  "   create table Orders (\n" +
+ 
+        final String tableOrders =  "   create table Orders (\n" +
                                 "   OrderID numeric(12,0) NOT NULL,\n" +
                                 "   DateOrder Date NOT NULL, \n" +
                                 "   TimeOrder Time NOT NULL, \n" +
@@ -94,12 +65,7 @@ public class DataBaseInstallation {
                                 "   PRIMARY KEY (OrderID)\n" +
                                 "   );";
          
-   tableCreator(tableOrders);     
-   
-   
-   
-   
-     final String  tableCart =  "   create table Cart (\n" +
+        final String  tableCart =  "   create table Cart (\n" +
                                 "   UserName VARCHAR(20)NOT NULL,\n" +
                                 "   PartNumber numeric(12,0) NOT NULL,\n" +
                                 "   Quantity Integer NOT NULL,\n" +
@@ -107,9 +73,7 @@ public class DataBaseInstallation {
                                 "   FOREIGN KEY (PartNumber ) REFERENCES Parts(PartNumber) \n" +
                                 "   );";
 
-    tableCreator(tableCart); 
-    
-    final String  PhoneNumber =   "       create table PhoneNumber (\n" +
+        final String  PhoneNumber =   "       create table PhoneNumber (\n" +
                                 "	UserName    VARCHAR(20) NOT NULL,\n" +
                                 "	PhoneNumber1 Numeric (10) NOT NULL,\n" +
                                 "	PhoneNumber2 Numeric (10),\n" +
@@ -118,9 +82,7 @@ public class DataBaseInstallation {
                                 "	PRIMARY KEY (UserName)\n" +
                                 ");";
 
-    tableCreator(PhoneNumber); 
-    
-    final String  OrderContent =  "create table OrderContent (\n" +
+        final String  OrderContent =  "create table OrderContent (\n" +
                                 "	UserName VARCHAR(20) NOT NULL,\n" +
                                 "	PartNumber numeric(12,0) NOT NULL,\n" +
                                 "	OrderID numeric(12,0) NOT NULL,\n" +
@@ -131,8 +93,25 @@ public class DataBaseInstallation {
                                 "	FOREIGN KEY (OrderID ) REFERENCES Orders(OrderID)\n" +
                                 "	);";
 
-    tableCreator(OrderContent); 
-     
+        final String  countries = "create table countries (\n" + 
+                                    "countrieName VARCHAR(50) NOT NULL,\n" + 
+                                    "PRIMARY KEY (countrieName)\n" + 
+                                    ");\n" ; 
+    
+        tableCreator(tableUsers);
+        tableCreator(tableParts);
+        tableCreator(tableClientsPayment); 
+        tableCreator(tableOrders); 
+        tableCreator(tableCart);
+        tableCreator(PhoneNumber); 
+        tableCreator(OrderContent); 
+        tableCreator(countries);
+          
+             
+            
+         
+          
+         
     }
 }
 
