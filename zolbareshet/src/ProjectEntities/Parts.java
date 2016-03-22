@@ -20,7 +20,13 @@ public class Parts {
     
     public Parts(int partnumber, String partname , String description ,int Price , int availablequantity , boolean isactive , int discount )
     {
-        
+          PartNumber =partnumber ; 
+          PartName = partname ; 
+          Description = description ; 
+          Price = Price ; 
+          AvailableQuantity = availablequantity ; 
+          IsActive = isactive ; 
+          discount = discount ; 
     }
     
     //Part Number 
@@ -103,9 +109,9 @@ public class Parts {
         return this.discount;
     }
     
-    public void setDiscount(int newActive)
+    public void setDiscount(int Discount)
     {
-        this.discount = newActive ; 
+        this.discount = Discount ; 
     }
 }
 
