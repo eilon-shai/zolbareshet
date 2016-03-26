@@ -19,7 +19,12 @@ import java.util.Date;
 public class main {
     public static void main (String args []) throws IOException
     {
-        String userName ="shay4040" ; 
+        String userName1 ="shay4040" ; 
+        String userName2 ="David123" ; 
+        String userName3 ="David" ; 
+        System.out.println(" IS USER EXIST : " +  userName1 + "  \t" +  DataUsers.isUserExist(userName1));
+        System.out.println(" IS USER EXIST : " +  userName2 + "  \t" + DataUsers.isUserExist(userName2));
+        System.out.println(" IS USER EXIST : " +  userName3 + "  \t" + DataUsers.isUserExist(userName3));
        /* 
           System.out.println(" IS USER EXIST : " +  DataUsers.isUserExist(userName));
           
@@ -37,7 +42,7 @@ public class main {
          User test = new User (UserName,FirstName,LastName,Password,IsActive,Numbers,address,Email,BirthDate,UserType,Gender); 
          UserQueries n = new UserQueries () ;
          n.addUser(test) ;
-         */
+         
          // testing getUserDetails 
          if ( DataUsers.getUserDetails(userName) == null ) 
          {
@@ -48,5 +53,6 @@ public class main {
          System.out.println("Done ");
          System.out.println("Done ");
          System.out.println("Done ");
+*/
     }
 }

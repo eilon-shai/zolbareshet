@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package tempfiles;
+//package tempfiles;
 
 import javax.swing.*;
 import java.io.File;

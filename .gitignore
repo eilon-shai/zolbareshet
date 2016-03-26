@@ -15,3 +15,5 @@ zolbareshet/.idea/libraries/Richfaces_4_2_2.xml
 zolbareshet/.idea/misc.xml
 *.xml
 zolbareshet/out/artifacts/zolbareshet_war_exploded/accounting/foo.xhtml
+/zolbareshet/nbproject/private/
+/zolbareshet/build/

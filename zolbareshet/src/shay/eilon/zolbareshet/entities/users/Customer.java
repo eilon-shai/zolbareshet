@@ -1,7 +1,7 @@
 package shay.eilon.zolbareshet.entities.users;
 
 
-import com.esotericsoftware.minlog.Log;
+
 import shay.eilon.zolbareshet.logging.Logger;
 import shay.eilon.zolbareshet.logging.LoggerFactory;
 import shay.eilon.zolbareshet.payments.CreditCard;

@@ -28,7 +28,7 @@ public class DataBaseInstallation {
         final String DataBaseName = "Zol_10" ; 
         
         final String DataBasePath   = "C:\\ZolBareshert_GIT6\\Queries\\CREATE_DATABASE.sql" ; 
-       DataBaseInstaller.RunQuery(DataBasePath , "");
+       DataBaseInstaller.RunQuery(DataBasePath  );
        
        
         final String tableUsers  =  "create table Users (\n" +
