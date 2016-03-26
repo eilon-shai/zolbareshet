@@ -206,9 +206,10 @@ public class getInstallationConfig {
   
     }
       
-   public static String getDataBaseURL()
+      
+    public static String getDataBaseURL()
     {
-        String DataBaseURL="" ; 
+        String DataBaseURLConfig="" ; 
 	Properties prop = new Properties();
 	InputStream input = null;
 
@@ -217,7 +218,7 @@ public class getInstallationConfig {
 		// load a properties file
 		prop.load(input);
 		// get the property value and print it out
-                DataBaseURL =  prop.getProperty("DataBaseURL");
+                DataBaseURLConfig =  prop.getProperty("DataBaseURL");
 
                 
                
@@ -233,6 +234,8 @@ public class getInstallationConfig {
 			}
 		}
 	}
-        return DataBaseURL ; 
+        return DataBaseURLConfig ; 
+  
+    }
             
 }

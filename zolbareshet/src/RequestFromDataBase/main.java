@@ -20,10 +20,10 @@ public class main {
     public static void main (String args []) throws IOException
     {
         String userName ="shay4040" ; 
-        
+       /* 
           System.out.println(" IS USER EXIST : " +  DataUsers.isUserExist(userName));
           
-         String       UserName    = "David123"  ;     
+         String       UserName    = "David123456"  ;     
 	 String       FirstName   =  "David"  ;  
 	 String       LastName    = "Bowie"  ; 
 	 String       Password    = "IamTheKing123"  ;
@@ -34,10 +34,19 @@ public class main {
 	 date         BirthDate   = new date(22,12,1999);
 	 int          UserType    =  1  ;
 	 int          Gender      =  1  ; 
-         
          User test = new User (UserName,FirstName,LastName,Password,IsActive,Numbers,address,Email,BirthDate,UserType,Gender); 
-         
          UserQueries n = new UserQueries () ;
          n.addUser(test) ;
+         */
+         // testing getUserDetails 
+         if ( DataUsers.getUserDetails(userName) == null ) 
+         {
+             System.out.println("User Not Exist");
+         }
+         else System.out.println("Done ");
+         System.out.println("Done ");
+         System.out.println("Done ");
+         System.out.println("Done ");
+         System.out.println("Done ");
     }
 }

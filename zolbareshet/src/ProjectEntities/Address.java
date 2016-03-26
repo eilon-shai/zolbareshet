@@ -56,7 +56,7 @@ public class Address {
         return ZipCode;
     }
 
-    public void setZipCode(String zipCode) {
+    public void setZipCode(int zipCode) {
         this.ZipCode = ZipCode;
     }
 
@@ -83,7 +83,7 @@ public class Address {
     
 
 public String toString(){
-    return Country+" "+City+" "+Street+" " + HouseNumber + " " + ZipCode   ;  
+    return this.Country+" , "+this.City+" , "+this.Street+" , " + this.HouseNumber + " , " + this.ZipCode + "\n"  ;  
 }
 
 
