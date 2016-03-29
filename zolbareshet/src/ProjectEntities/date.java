@@ -47,7 +47,7 @@ public class date {
         return Year  ; 
     }
     
-    public String getDate () 
+    public String getDateToString () 
     {
         char tag = '-' ; 
         String BirthDate = "";
