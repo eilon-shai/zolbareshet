@@ -46,7 +46,7 @@ public class DataUsers {
      
      
      
-   public static User getUserDetails(String userName)
+     public static User getUserDetails(String userName)
     {
         
      if (isUserExist(userName) )

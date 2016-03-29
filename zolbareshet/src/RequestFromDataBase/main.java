@@ -19,16 +19,20 @@ import java.util.Date;
 public class main {
     public static void main (String args []) throws IOException
     {
+        
+       // System.out.println("PartNumber : " + Part.isPartNumberExist(123456789));
+        
+      /*  
         String userName1 ="shay4040" ; 
         String userName2 ="David123" ; 
         String userName3 ="David" ; 
         System.out.println(" IS USER EXIST : " +  userName1 + "  \t" +  DataUsers.isUserExist(userName1));
         System.out.println(" IS USER EXIST : " +  userName2 + "  \t" + DataUsers.isUserExist(userName2));
         System.out.println(" IS USER EXIST : " +  userName3 + "  \t" + DataUsers.isUserExist(userName3));
-       /* 
-          System.out.println(" IS USER EXIST : " +  DataUsers.isUserExist(userName));
+        */
+       // System.out.println(" IS USER EXIST : " +  DataUsers.isUserExist(userName));
           
-         String       UserName    = "David123456"  ;     
+         String       UserName    = "David999"  ;     
 	 String       FirstName   =  "David"  ;  
 	 String       LastName    = "Bowie"  ; 
 	 String       Password    = "IamTheKing123"  ;
@@ -44,15 +48,15 @@ public class main {
          n.addUser(test) ;
          
          // testing getUserDetails 
-         if ( DataUsers.getUserDetails(userName) == null ) 
-         {
-             System.out.println("User Not Exist");
-         }
-         else System.out.println("Done ");
-         System.out.println("Done ");
-         System.out.println("Done ");
-         System.out.println("Done ");
-         System.out.println("Done ");
-*/
+        // if ( DataUsers.getUserDetails(userName) == null ) 
+      //   {
+      //       System.out.println("User Not Exist");
+      //   }
+       //  else System.out.println("Done ");
+       //  System.out.println("Done ");
+     //    System.out.println("Done ");
+      //   System.out.println("Done ");
+       //  System.out.println("Done ");
+//*/
     }
 }
