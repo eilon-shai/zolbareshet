@@ -1,13 +1,12 @@
 package shay.eilon.zolbareshet.entities.users;
 
 import javax.faces.bean.ManagedBean;
-import javax.swing.*;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 
-@ManagedBean
+
 public class Password {
     private byte[] encryptedPassword;
     private String password;
@@ -106,10 +105,10 @@ public class Password {
 
     public static void main(String[] args) {
         if(args.length==1){
-            JOptionPane.showMessageDialog(null,encryptedPasswordMaker(args[0]),"Encrypted Password",JOptionPane.PLAIN_MESSAGE);
+            System.out.println(encryptedPasswordMaker(args[0]));
         }
         else{
-            JOptionPane.showMessageDialog(null,"NO Input Was Givven","Error",JOptionPane.ERROR_MESSAGE);
+            System.out.println("missing parameter \nUSAGE: encrypting-tool <password>");
         }
     }
 }

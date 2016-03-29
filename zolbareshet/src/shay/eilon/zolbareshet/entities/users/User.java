@@ -1,39 +1,35 @@
 package shay.eilon.zolbareshet.entities.users;
 
 import shay.eilon.zolbareshet.logging.Logger;
+import shay.eilon.zolbareshet.logging.MainLogger;
 import shay.eilon.zolbareshet.logging.LoggerFactory;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 
-@ManagedBean
-@SessionScoped
+
 public abstract class User {
     private final int MAXIMUM_NUMBER_OF_PHONES=4;
-    private int ID;
     private Name name;
-    private Address address;
+    private AddressBean addressBean;
     private ArrayList<PhoneBean> phonesList;
     private Password password;
     private String nickName;
     private UserInfo userInfo;
-    private Logger logger;
+    private Logger logger = LoggerFactory.getLogger();;
 
     public User(){
         name=new Name();
-        address=new Address();
+        addressBean =new AddressBean();
         phonesList = new ArrayList<PhoneBean>();
         addPhone();
         password = new Password();
         userInfo = new UserInfo();
-        logger = LoggerFactory.getLogger();
+
     }
 
-    public User(int ID, Name name, Address address, ArrayList<PhoneBean> phonesList, Password password, String nickName, UserInfo userInfo) {
-        this.ID = ID;
+    public User(Name name, AddressBean addressBean, ArrayList<PhoneBean> phonesList, Password password, String nickName, UserInfo userInfo) {
         this.name = name;
-        this.address = address;
+        this.addressBean = addressBean;
         this.phonesList = phonesList;
         this.password = password;
         this.nickName = nickName;
@@ -60,13 +56,6 @@ public abstract class User {
         this.phonesList = phonesList;
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
 
     public Name getName() {
         return name;
@@ -76,12 +65,12 @@ public abstract class User {
         this.name = name;
     }
 
-    public Address getAddress() {
-        return address;
+    public AddressBean getAddressBean() {
+        return addressBean;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddressBean(AddressBean addressBean) {
+        this.addressBean = addressBean;
     }
 
 
@@ -118,8 +107,17 @@ public abstract class User {
     }
 
     public String toString(){
-        return ID + " " + (name!=null?name+" ":"")+(address!=null?address+" ":"")+(userInfo!=null?userInfo+" ":"")+(password!=null?password+" ":"")+(nickName!=null?nickName+" ":"");
+        return  (name!=null?name+" ":"")+(addressBean !=null? addressBean +" ":"")+(userInfo!=null?userInfo+" ":"")+(password!=null?password+" ":"")+(nickName!=null?nickName+" ":"");
     }
 
    public abstract String register();
+
+    public void clearUser(){
+        name=null;
+        addressBean =null;
+        phonesList=null;
+        password=null;
+        nickName=null;
+        userInfo=null;
+    }
 }

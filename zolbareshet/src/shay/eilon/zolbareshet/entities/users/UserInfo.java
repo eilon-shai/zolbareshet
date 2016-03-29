@@ -3,7 +3,7 @@ package shay.eilon.zolbareshet.entities.users;
 import javax.faces.bean.ManagedBean;
 import java.util.Date;
 
-@ManagedBean
+
 public class UserInfo {
     public enum gender{MALE,FEMALE};
     private gender userGender;
@@ -11,7 +11,7 @@ public class UserInfo {
     private String mailAddress;
 
     public UserInfo(){
-        birthDate=new Date();
+
     }
 
     public UserInfo(gender userGender, Date birthDate, String mailAddress) {

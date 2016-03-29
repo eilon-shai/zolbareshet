@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/ZolBareshert_GIT6"/>
+<Context>
+
+
+<Resource name="jdbc/zol" auth="Container" type="javax.sql.DataSource"
+          factory="shay.eilon.zolbareshet.database.CustomDataSourceFactory"
+          jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
+            org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
+          username="postgres" password="0,7#0%22%0%55%0,55%0%119%0%-10#0,39%0%70%"
+          maxActive="50" maxIdle="30" maxWait="10000"
+          driverClassName="org.postgresql.Driver"
+          closeMethod="close" singleton="true"
+          url="jdbc:postgresql://localhost:5432/Zol"/>
+
+</Context>

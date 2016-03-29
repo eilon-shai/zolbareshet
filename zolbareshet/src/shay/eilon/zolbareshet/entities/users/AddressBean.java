@@ -12,10 +12,8 @@ import javax.faces.validator.ValidatorException;
 import java.util.Arrays;
 import java.util.List;
 
-
 @ManagedBean
-@SessionScoped
-public class Address {
+public class AddressBean {
     private String country;
     private String city;
     private String street;
@@ -24,11 +22,12 @@ public class Address {
     private String zipCode;
     private List<String> countries;
 
-    public Address() {
-
+    public AddressBean() {
+            country = "Israel";
+            countries = Arrays.asList(allCountries);
     }
 
-    public Address(String country, String city, String street, int streetNumber, int floorNumber, String zipCode) {
+    public AddressBean(String country, String city, String street, int streetNumber, int floorNumber, String zipCode) {
         this.country = country;
         this.city = city;
         this.street = street;
@@ -37,11 +36,8 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    @PostConstruct
-    public void init() {
-        country = "Israel";
-        countries = Arrays.asList(allCountries);
-    }
+
+
 
 
     public String getCity() {

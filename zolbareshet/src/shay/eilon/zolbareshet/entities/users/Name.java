@@ -4,7 +4,7 @@ import javax.faces.bean.ManagedBean;
 import java.io.Serializable;
 
 
-@ManagedBean
+
 public class Name implements Serializable{
     private String firstName;
     private String lastName;

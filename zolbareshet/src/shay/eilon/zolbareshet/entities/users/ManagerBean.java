@@ -5,15 +5,15 @@ import java.util.ArrayList;
 
 
 @ManagedBean
-public class Manager extends User{
+public class ManagerBean extends User{
 
     private String[] roles;
-    public Manager(){
+    public ManagerBean(){
         super();
     }
 
-    public Manager(int ID, Name name, Address address, ArrayList<PhoneBean> phoneNumbers, Password password, String nickName, UserInfo userInfo, String[] roles) {
-        super(ID, name, address, phoneNumbers, password, nickName, userInfo);
+    public ManagerBean(Name name, AddressBean addressBean, ArrayList<PhoneBean> phoneNumbers, Password password, String nickName, UserInfo userInfo, String[] roles) {
+        super( name, addressBean, phoneNumbers, password, nickName, userInfo);
         this.roles = roles;
     }
 

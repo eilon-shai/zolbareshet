@@ -7,9 +7,7 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-/**
- * Created by eilons on 3/3/2016.
- */
+//for fields of type int
 @FacesValidator("positiveNumberValidator")
 public class PositiveNumberValidator implements Validator{
 

@@ -12,7 +12,7 @@ public abstract class  FileChangeListener extends Thread{
     private long timeStamp;
     private static final int FIFTEEN_SECONDS = 15000;
     private static final int TIME_TO_SLEEP=FIFTEEN_SECONDS;
-
+    private volatile boolean keepRun=true;
 
     public FileChangeListener( File file ) {
         this.file = file;
@@ -20,7 +20,7 @@ public abstract class  FileChangeListener extends Thread{
     }
 
     public void run(){
-        while(true){
+        while(keepRun){
             long timeStamp = file.lastModified();
             if( this.timeStamp != timeStamp ) {
                 this.timeStamp = timeStamp;
@@ -47,6 +47,10 @@ public abstract class  FileChangeListener extends Thread{
     }
 
     public abstract void propertyChanged();
+
+    public void stopRunning(){
+        keepRun=false;
+    }
 
 
 }
