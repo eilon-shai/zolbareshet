@@ -49,9 +49,6 @@ public class User implements Serializable{
         BirthDate    = birthDate    ;
         UserType     = userType     ;
         Gender       = gender       ;
-        
-        System.out.println("Date : )"  + this.BirthDate);
-                                
                         
     }
     public String getUserName() {
@@ -84,6 +81,11 @@ public class User implements Serializable{
       return Address ; 
     }
     
+    public void setAddress (Address userAddress ) 
+    {
+        this.Address = userAddress ; 
+    }
+    
     public String getEmail()
     {
       return Email ; 
@@ -95,7 +97,7 @@ public class User implements Serializable{
     }
     public String toStringBirthDate()
     {
-      return BirthDate.getDate()  ; 
+      return BirthDate.getDateToString()  ; 
     }
     
     public int getUserType()
@@ -118,12 +120,64 @@ public class User implements Serializable{
     public void setLastName(String lastName) {
         this.LastName = lastName;
     }
+    
+    public void setUserName(String userName) {
+    this.UserName = userName;
+    }
 
+    public void setPassword ( String password )
+    {
+        this.Password = password ; 
+    }
+    
+    public void setActive ( boolean active )
+    {
+        this.IsActive = active; 
+    }
+    
+    public void setEmail ( String mail )
+    {
+        this.Email = mail ; 
+    }
+    
+    public void setPhoneNumbers (PhoneNumber userNumbers )
+    {
+        this.PhoneNumbers = userNumbers ; 
+    }
+    
+    
+    public void setUserType ( int userType )
+    {
+        this.UserType = userType;
+    }
+    
+    public void setGender ( int gender )
+    {
+        this.Gender = gender ; 
+    }
+  /*  public void setPhoneNumber (PhoneNumber number)
+    {
+        number.setPhoneNumbers(NewPhoneNumbers);
+    }*/
     public String toString(){
-      return this.FirstName + " "  + this.LastName;
+      return "USER  NAME  : " + this.UserName  + "\n" + 
+             "FIRST NAME  : " + this.FirstName + "\n" +  
+             "LAST  NAME  : " + this.LastName  + "\n" + 
+             "PASSWORD    : " + this.Password  + "\n" +
+             "IS ACTIVE   : " + this.IsActive  + "\n" +
+             "ADDRESS     : " + this.Address.toString() + "\n" + 
+             "PHONES      : " + this.PhoneNumbers.toString() + "\n" + 
+             "EMAIL       : " + this.Email     + "\n" +
+             "USER TYPE   : " + this.UserType  + "\n" +
+             "GENDER      : " + this.Gender    + "\n" ;
     }
     
  
-    
   }
 
+    /*   
+        PhoneNumbers = phoneNumbers ; 
+        Address      = address      ; 
+        BirthDate    = birthDate    ;
+         
+    */

@@ -43,9 +43,11 @@ public class UserQueries {
   public int addUser(User user )
   {
       int results = 0 ; 
+      if (!DataUsers.isUserExist(user.getUserName()))
+      {
       try 
       {
-            System.out.println("----- +   "+ user.getBirthDate() );
+          System.out.println("- * - * - * - * -"+ user.toStringBirthDate());
           insertNewUser.setString(1,user.getUserName()                  );
           insertNewUser.setString(2,user.getFirstName()                 );
           insertNewUser.setString(3,user.getLastName()                  ); 
@@ -61,14 +63,17 @@ public class UserQueries {
           insertNewUser.setInt(13,user.getUserType()                    );
           insertNewUser.setInt(14,user.getGender()                      );
           results = insertNewUser.executeUpdate();
+          System.out.println("results of add user = " + results );
       } 
-      catch (SQLException ex) 
-      {
+        catch (SQLException ex) 
+        {
           Logger.getLogger(UserQueries.class.getName()).log(Level.SEVERE, null, ex);
           close();
-      }
+        }
+     }
       return results ; 
-  }
+    }
+  
   
   public void close () 
   {
@@ -84,3 +89,4 @@ public class UserQueries {
   }
   
 }
+//300316
