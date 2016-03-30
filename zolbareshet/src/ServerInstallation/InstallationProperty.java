@@ -41,7 +41,7 @@ public class InstallationProperty
         try {
             StringBuilder pathToJarFile = new StringBuilder(InstallationProperty.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
             String pathToParentDirectory = pathToJarFile.substring(0, pathToJarFile.lastIndexOf("/"));
-            file = new FileInputStream(new File(pathToParentDirectory + "/" + PROPERTY_FILE_NAME));
+            file = new FileInputStream(new File("C:\\Users\\eilons\\Documents\\GitHub\\zolbareshet\\zolbareshet\\web\\WEB-INF\\config.properties"));
             prop.load(file);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error Occurs Trying to Open the config.properties File", "ERROR", JOptionPane.ERROR_MESSAGE);

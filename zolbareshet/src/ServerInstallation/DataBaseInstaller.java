@@ -46,7 +46,7 @@ public final class DataBaseInstaller
         System.out.println(RunQuery);     
         PreparedStatement table = connection.prepareStatement(RunQuery) ;    
         table.executeUpdate();
-        table.closeOnCompletion();
+       // table.closeOnCompletion();
         }
         }
          catch (SQLException sqlException)
@@ -72,7 +72,7 @@ public final class DataBaseInstaller
         {
         PreparedStatement table = connection.prepareStatement(SELECT_Q) ;
         table.executeUpdate();
-        table.closeOnCompletion();
+      //  table.closeOnCompletion();
          System.out.println("----------------------1 second - Table Creator DONE !!!---------------------" );
         }
         }

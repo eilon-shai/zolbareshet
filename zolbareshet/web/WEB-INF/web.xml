@@ -5,7 +5,7 @@
          version="3.1">
     <context-param>
         <param-name>com.sun.faces.injectionProvider</param-name>
-        <param-value>shay.eilon.zolbareshet.utilities.Tomcat7InjectionProvider</param-value>
+        <param-value>org.es.zolbareshet.utilities.Tomcat7InjectionProvider</param-value>
     </context-param>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>

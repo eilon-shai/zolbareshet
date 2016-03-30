@@ -116,4 +116,11 @@ p {
     margin-bottom: 1px;
 }
 
+.even {
+    background-color: #666666;
+}
+.odd {
+    background-color: #f8b920;
+}
+
 

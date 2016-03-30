@@ -13,7 +13,7 @@ public class DataBaseInstallation {
    public static void main (String args []) throws IOException
     {
  
-        final String DataBasePath   = "C:\\ZolBareshert_GIT6\\Queries\\CREATE_DATABASE.sql" ; 
+        final String DataBasePath   = "C:\\Users\\eilons\\Documents\\GitHub\\zolbareshet\\zolbareshet\\src\\ServerInstallation\\CREATE_DATABASE.sql" ;
         DataBaseInstaller.RunQuery(DataBasePath );
         
         final String tableUsers  =  "create table Users (\n" +

@@ -15,224 +15,206 @@ import java.util.Properties;
  * @author peretzs
  */
 public class getInstallationConfig {
-    
-    
-    public static String [] getConfig()
-    {
-        String Config [] = new String [5] ; 
-	Properties prop = new Properties();
-	InputStream input = null;
 
-	try {
-		input = new FileInputStream("C:\\ZolBareshert_GIT6\\zolbareshet\\zolbareshet\\src\\ServerInstallation\\config.properties");
-		// load a properties file
-		prop.load(input);
-		// get the property value and print it out
-                Config[0] =  prop.getProperty("URL");
-                Config[1]  = prop.getProperty("Coding");
-                Config[2]  = prop.getProperty("DataBaseName");
-                Config[3]  = prop.getProperty("DataBaseUserName");
-                Config[4]  = prop.getProperty("DataBasePassword");
-                
-               
 
-	} catch (IOException ex) {
-		ex.printStackTrace();
-	} finally {
-		if (input != null) {
-			try {
-				input.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+	public static String[] getConfig() {
+		String Config[] = new String[5];
+		Properties prop = new Properties();
+		InputStream input = null;
+
+		try {
+			input = new FileInputStream("C:\\Users\\eilons\\Documents\\GitHub\\zolbareshet\\zolbareshet\\web\\WEB-INF\\config.properties");
+			// load a properties file
+			prop.load(input);
+			// get the property value and print it out
+			Config[0] = prop.getProperty("URL");
+			Config[1] = prop.getProperty("Coding");
+			Config[2] = prop.getProperty("DataBaseName");
+			Config[3] = prop.getProperty("DataBaseUserName");
+			Config[4] = prop.getProperty("DataBasePassword");
+
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
+		return Config;
+
 	}
-        return Config ; 
-  
-    }
-    
-        public static String getURL()
-    {
-        String URLConfig="" ; 
-	Properties prop = new Properties();
-	InputStream input = null;
 
-	try {
-		input = new FileInputStream("C:\\ZolBareshert_GIT6\\zolbareshet\\zolbareshet\\src\\ServerInstallation\\config.properties");
-		// load a properties file
-		prop.load(input);
-		// get the property value and print it out
-                URLConfig =  prop.getProperty("URL");
+	public static String getURL() {
+		String URLConfig = "";
+		Properties prop = new Properties();
+		InputStream input = null;
 
-	} catch (IOException ex) {
-		ex.printStackTrace();
-	} finally {
-		if (input != null) {
-			try {
-				input.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+		try {
+			input = new FileInputStream("C:\\Users\\eilons\\Documents\\GitHub\\zolbareshet\\zolbareshet\\web\\WEB-INF\\config.properties");
+			// load a properties file
+			prop.load(input);
+			// get the property value and print it out
+			URLConfig = prop.getProperty("URL");
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
+		return URLConfig;
+
 	}
-        return URLConfig ; 
-  
-    }
-            
-     
-        
-    public static String getCoding()
-    {
-        String CodeConfig="" ; 
-	Properties prop = new Properties();
-	InputStream input = null;
 
-	try {
-		input = new FileInputStream("C:\\ZolBareshert_GIT6\\zolbareshet\\zolbareshet\\src\\ServerInstallation\\config.properties");
-		// load a properties file
-		prop.load(input);
-		// get the property value and print it out
-                CodeConfig =  prop.getProperty("Coding");
 
-                
-               
+	public static String getCoding() {
+		String CodeConfig = "";
+		Properties prop = new Properties();
+		InputStream input = null;
 
-	} catch (IOException ex) {
-		ex.printStackTrace();
-	} finally {
-		if (input != null) {
-			try {
-				input.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+		try {
+			input = new FileInputStream("C:\\Users\\eilons\\Documents\\GitHub\\zolbareshet\\zolbareshet\\web\\WEB-INF\\config.properties");
+			// load a properties file
+			prop.load(input);
+			// get the property value and print it out
+			CodeConfig = prop.getProperty("Coding");
+
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
+		return CodeConfig;
+
 	}
-        return CodeConfig ; 
-  
-    }
-    
-    public static String getDataBaseName()
-    {
-        String DataBaseNameConfig="" ; 
-	Properties prop = new Properties();
-	InputStream input = null;
 
-	try {
-		input = new FileInputStream("C:\\ZolBareshert_GIT6\\zolbareshet\\zolbareshet\\src\\ServerInstallation\\config.properties");
-		// load a properties file
-		prop.load(input);
-		// get the property value and print it out
-                DataBaseNameConfig =  prop.getProperty("DataBaseName");
+	public static String getDataBaseName() {
+		String DataBaseNameConfig = "";
+		Properties prop = new Properties();
+		InputStream input = null;
 
-                
-               
+		try {
+			input = new FileInputStream("C:\\Users\\eilons\\Documents\\GitHub\\zolbareshet\\zolbareshet\\web\\WEB-INF\\config.properties");
+			// load a properties file
+			prop.load(input);
+			// get the property value and print it out
+			DataBaseNameConfig = prop.getProperty("DataBaseName");
 
-	} catch (IOException ex) {
-		ex.printStackTrace();
-	} finally {
-		if (input != null) {
-			try {
-				input.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
+		return DataBaseNameConfig;
+
 	}
-        return DataBaseNameConfig ; 
-  
-    }
-    
-    
-     public static String getDataBaseUserName()
-    {
-        String DataBaseUserNameConfig="" ; 
-	Properties prop = new Properties();
-	InputStream input = null;
 
-	try {
-		input = new FileInputStream("C:\\ZolBareshert_GIT6\\zolbareshet\\zolbareshet\\src\\ServerInstallation\\config.properties");
-		// load a properties file
-		prop.load(input);
-		// get the property value and print it out
-                DataBaseUserNameConfig =  prop.getProperty("DataBaseUserName");
 
-                
-               
+	public static String getDataBaseUserName() {
+		String DataBaseUserNameConfig = "";
+		Properties prop = new Properties();
+		InputStream input = null;
 
-	} catch (IOException ex) {
-		ex.printStackTrace();
-	} finally {
-		if (input != null) {
-			try {
-				input.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+		try {
+			input = new FileInputStream("C:\\Users\\eilons\\Documents\\GitHub\\zolbareshet\\zolbareshet\\web\\WEB-INF\\config.properties");
+			// load a properties file
+			prop.load(input);
+			// get the property value and print it out
+			DataBaseUserNameConfig = prop.getProperty("DataBaseUserName");
+
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
+		return DataBaseUserNameConfig;
+
 	}
-        return DataBaseUserNameConfig ; 
-  
-    }
-     
-      public static String getDataBasePassword()
-    {
-        String DataBasePasswordConfig="" ; 
-	Properties prop = new Properties();
-	InputStream input = null;
 
-	try {
-		input = new FileInputStream("C:\\ZolBareshert_GIT6\\zolbareshet\\zolbareshet\\src\\ServerInstallation\\config.properties");
-		// load a properties file
-		prop.load(input);
-		// get the property value and print it out
-                DataBasePasswordConfig =  prop.getProperty("DataBasePassword");
+	public static String getDataBasePassword() {
+		String DataBasePasswordConfig = "";
+		Properties prop = new Properties();
+		InputStream input = null;
 
-                
-               
+		try {
+			input = new FileInputStream("C:\\Users\\eilons\\Documents\\GitHub\\zolbareshet\\zolbareshet\\web\\WEB-INF\\config.properties");
+			// load a properties file
+			prop.load(input);
+			// get the property value and print it out
+			DataBasePasswordConfig = prop.getProperty("DataBasePassword");
 
-	} catch (IOException ex) {
-		ex.printStackTrace();
-	} finally {
-		if (input != null) {
-			try {
-				input.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
+		return DataBasePasswordConfig;
+
 	}
-        return DataBasePasswordConfig ; 
-  
-    }
-      
-   public static String getDataBaseURL()
-    {
-        String DataBaseURL="" ; 
-	Properties prop = new Properties();
-	InputStream input = null;
 
-	try {
-		input = new FileInputStream("C:\\ZolBareshert_GIT6\\zolbareshet\\zolbareshet\\src\\ServerInstallation\\config.properties");
-		// load a properties file
-		prop.load(input);
-		// get the property value and print it out
-                DataBaseURL =  prop.getProperty("DataBaseURL");
+	public static String getDataBaseURL() {
+		String DataBaseURL = "";
+		Properties prop = new Properties();
+		InputStream input = null;
 
-                
-               
+		try {
+			input = new FileInputStream("C:\\Users\\eilons\\Documents\\zolbareshet\\GitHub\\zolbareshet\\web\\WEB-INF\\config.properties");
+			// load a properties file
+			prop.load(input);
+			// get the property value and print it out
+			DataBaseURL = prop.getProperty("DataBaseURL");
 
-	} catch (IOException ex) {
-		ex.printStackTrace();
-	} finally {
-		if (input != null) {
-			try {
-				input.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
+		return DataBaseURL;
+
 	}
-        return DataBaseURL ; 
-            
 }
