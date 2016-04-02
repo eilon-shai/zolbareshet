@@ -15,66 +15,70 @@ import java.util.Properties;
  * @author peretzs
  */
 public class getInstallationConfig {
-
-
-	public static String[] getConfig() {
-		String Config[] = new String[5];
-		Properties prop = new Properties();
-		InputStream input = null;
-
-		try {
-			input = new FileInputStream("C:\\Users\\eilons\\Documents\\GitHub\\zolbareshet\\zolbareshet\\web\\WEB-INF\\config.properties");
-			// load a properties file
-			prop.load(input);
-			// get the property value and print it out
-			Config[0] = prop.getProperty("URL");
-			Config[1] = prop.getProperty("Coding");
-			Config[2] = prop.getProperty("DataBaseName");
-			Config[3] = prop.getProperty("DataBaseUserName");
-			Config[4] = prop.getProperty("DataBasePassword");
-
-
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		} finally {
-			if (input != null) {
-				try {
-					input.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+    
+    public static String[] getConfig() 
+    {
+	String Config[] = new String[5];
+	Properties prop = new Properties();
+	InputStream input = null;
+	try {
+            input = new FileInputStream("C:\\Users\\eilons\\Documents\\GitHub\\zolbareshet\\zolbareshet\\web\\WEB-INF\\config.properties");
+            prop.load(input);
+            Config[0] = prop.getProperty("URL");
+            Config[1] = prop.getProperty("Coding");
+            Config[2] = prop.getProperty("DataBaseName");
+            Config[3] = prop.getProperty("DataBaseUserName");
+            Config[4] = prop.getProperty("DataBasePassword");
+            } 
+        catch (IOException ex)
+            {
+		ex.printStackTrace();
+            }
+        finally 
+            {
+		if (input != null) 
+                {
+                    try {
+                        input.close();
+                        } 
+                    catch (IOException e) 
+                        {
+                        e.printStackTrace();
+                        }
 		}
-		return Config;
+            }
+    return Config;
+}
 
-	}
+    public static String getURL() {
+        String URLConfig = "";
+        Properties prop = new Properties();
+        InputStream input = null;
+        try {
+                input = new FileInputStream("C:\\ProgramData\\ZolBareshet\\config.properties");
+                prop.load(input);
+                URLConfig = prop.getProperty("URL");
+            } 
+        catch (IOException ex) 
+        {
+                ex.printStackTrace();
+        } 
+        finally 
+        {
+                if (input != null)
+                {
+                    try {
+                            input.close();
+                        } 
+                    catch (IOException e)
+                    {
+                            e.printStackTrace();
+                    }
+                }
+        }
+        return URLConfig;
 
-	public static String getURL() {
-		String URLConfig = "";
-		Properties prop = new Properties();
-		InputStream input = null;
-
-		try {
-			input = new FileInputStream("C:\\Users\\eilons\\Documents\\GitHub\\zolbareshet\\zolbareshet\\web\\WEB-INF\\config.properties");
-			// load a properties file
-			prop.load(input);
-			// get the property value and print it out
-			URLConfig = prop.getProperty("URL");
-
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		} finally {
-			if (input != null) {
-				try {
-					input.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return URLConfig;
-
-	}
+    }
 
 
 	public static String getCoding() {
@@ -83,7 +87,7 @@ public class getInstallationConfig {
 		InputStream input = null;
 
 		try {
-			input = new FileInputStream("C:\\Users\\eilons\\Documents\\GitHub\\zolbareshet\\zolbareshet\\web\\WEB-INF\\config.properties");
+			input = new FileInputStream("C:\\ProgramData\\ZolBareshet\\config.properties");
 			// load a properties file
 			prop.load(input);
 			// get the property value and print it out
@@ -140,7 +144,7 @@ public class getInstallationConfig {
 		InputStream input = null;
 
 		try {
-			input = new FileInputStream("C:\\Users\\eilons\\Documents\\GitHub\\zolbareshet\\zolbareshet\\web\\WEB-INF\\config.properties");
+			input = new FileInputStream("C:\\ProgramData\\ZolBareshet\\config.properties");
 			// load a properties file
 			prop.load(input);
 			// get the property value and print it out
@@ -168,7 +172,7 @@ public class getInstallationConfig {
 		InputStream input = null;
 
 		try {
-			input = new FileInputStream("C:\\Users\\eilons\\Documents\\GitHub\\zolbareshet\\zolbareshet\\web\\WEB-INF\\config.properties");
+			input = new FileInputStream("C:\\ProgramData\\ZolBareshet\\config.properties");
 			// load a properties file
 			prop.load(input);
 			// get the property value and print it out
