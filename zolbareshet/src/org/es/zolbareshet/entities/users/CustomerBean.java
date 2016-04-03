@@ -50,7 +50,7 @@ public class CustomerBean extends User {
     }
 
     public String register(){
-        if (QueriesHandler.checkingQuery(Constants.CHECKING_NEW_USER_NICKNAME_REGISTRATION_QUERY,null)) {
+       /* if (QueriesHandler.checkingQuery(Constants.CHECKING_NEW_USER_NICKNAME_REGISTRATION_QUERY,null)) {
            if (QueriesHandler.checkingQuery(Constants.CHECKING_NEW_USER_EMAIL_REGISTRATION_QUERY,null)) {
                 if (QueriesHandler.creatingQuery(Constants.ADD_NEW_USER_QUERY,null)) {
                     getLogger().log(MainLogger.LEVEL.INFO, "user " + getName() + " was successfully registered");
@@ -67,7 +67,7 @@ public class CustomerBean extends User {
             return Constants.REGISTRATION_PAGE;
         }
     //success registration
-        clearCustomer();
+        clearCustomer();*/
             return  Constants.HOME_PAGE;
 
 

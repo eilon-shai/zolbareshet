@@ -2,13 +2,12 @@
 <Context>
 
 
-<Resource name="jdbc/zol" auth="Container" type="javax.sql.DataSource"
+<Resource name="jdbc/postgres" auth="Container" type="javax.sql.DataSource"
           factory="org.es.zolbareshet.database.CustomDataSourceFactory"
-          jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
-            org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
           maxActive="50" maxIdle="30" maxWait="10000"
           driverClassName="org.postgresql.Driver"
           closeMethod="close" singleton="true"
           url="jdbc:postgresql://localhost:5432/ZolBareshetDataBase"/>
+
 
 </Context>

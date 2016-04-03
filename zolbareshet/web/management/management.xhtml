@@ -22,45 +22,35 @@
 
     <div class="content">
         <h:form>
-        <h:panelGrid style="position: absolute; left: 200px;" columns="9" id="buttons">
-            <h:commandButton class="styled-button" value="Manage Super Users" action="#{managerPageHelperBean.setShowManagerSection()}"/>
+        <h:panelGrid style="position: absolute; left: 200px;" columns="7" id="buttons">
+            <h:commandButton id="managerButton" class="styled-button" value="Manage Super Users" action="#{managerPageHelperBean.setShowManagerSection()}"/>
             <h:outputText/>
-            <h:commandButton class="styled-button" value="Manage Products" action="#{managerPageHelperBean.setShowProductsSection()}"/>
+            <h:commandButton id="productsButton" class="styled-button" value="Manage Products" action="#{managerPageHelperBean.setShowProductsSection()}"/>
             <h:outputText/>
-            <h:commandButton class="styled-button" value="View Server Configuration" action="#{managerPageHelperBean.setShowConfigurationSection()}"/>
+            <h:commandButton id="reportsButton" class="styled-button" value="View Reports" action="#{managerPageHelperBean.setShowReportSection()}"/>
             <h:outputText/>
-            <h:commandButton class="styled-button" value="View Server Log" action="#{managerPageHelperBean.setShowLogSection()}"/>
-           <h:outputText/>
-            <h:commandButton class="styled-button" value="View Reports" action="#{managerPageHelperBean.setShowReportSection()}"/>
-            <h:outputText/>
-            <h:commandButton class="styled-button" value="Run Query" action="#{managerPageHelperBean.runQuery()}"/>
+            <h:commandButton id="stateButton" class="styled-button" value="Server State" action="#{managerPageHelperBean.setShowServerStateSection()}"/>
         </h:panelGrid>
-            <div class="manger-section">
-            <h:panelGroup rendered="#{managerPageHelperBean.showLogSection}">
-            <ui:include src="log.xhtml" />
-            </h:panelGroup>
-            </div>
-            <div class="manger-section">
+            <div class="manager_page_section">
             <h:panelGroup rendered="#{managerPageHelperBean.showManagerSection}">
                 <ui:include src="superusers.xhtml" />
             </h:panelGroup>
             </div>
-            <div class="manger-section">
+            <div class="manager_page_section">
             <h:panelGroup rendered="#{managerPageHelperBean.showReportSection}">
                 <ui:include src="reports.xhtml" />
             </h:panelGroup>
             </div>
-            <div class="manger-section">
-            <h:panelGroup rendered="#{managerPageHelperBean.showConfigurationSection}">
-                <ui:include src="config.xhtml" />
-            </h:panelGroup>
-            </div>
-            <div class="manger-section">
+            <div class="manager_page_section">
             <h:panelGroup rendered="#{managerPageHelperBean.showProductsSection}">
                 <ui:include src="products.xhtml" />
             </h:panelGroup>
             </div>
-
+            <div class="manager_page_section">
+                <h:panelGroup rendered="#{managerPageHelperBean.showServerStateSection}">
+                    <ui:include src="serverState.xhtml" />
+                </h:panelGroup>
+            </div>
         </h:form>
     </div>
 </h:body>

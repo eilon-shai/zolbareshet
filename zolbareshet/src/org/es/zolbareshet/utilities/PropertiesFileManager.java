@@ -69,7 +69,7 @@ public class PropertiesFileManager {
         try {
             br = new BufferedReader(new FileReader(configFile));
             String line = br.readLine();
-            while (line != null) {
+            while (line != null && line.length()>0) {
                 if(line.charAt(0)!='#') {
                     configLine.add(line);
                 }

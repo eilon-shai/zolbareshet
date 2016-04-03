@@ -34,8 +34,8 @@
             <h:commandButton class="styled-button" value="View Reports" action="#{managerPageHelperBean.setShowReportSection()}"/>
         </h:panelGrid>
             <div class="manger-section">
-            <h:panelGroup rendered="#{managerPageHelperBean.showLogSection}">
-            <ui:include src="log.xhtml" />
+            <h:panelGroup rendered="#{managerPageHelperBean.showServerStateSection}">
+            <ui:include src="serverState.xhtml" />
             </h:panelGroup>
             </div>
             <div class="manger-section">

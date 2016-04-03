@@ -1,4 +1,4 @@
-package org.es.zolbareshet.entities.validators;
+package org.es.zolbareshet.JsfHelpers.validators;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;

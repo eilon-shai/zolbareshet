@@ -46,9 +46,5 @@ public abstract class  AbstractOrder {
     public void setOrderLines(Map<Product, Integer> orderLines) {
         this.orderLines = orderLines;
     }
-    public abstract boolean commitOrder();
-    public abstract boolean addProduct(Product p, int quantity);
-    public abstract boolean removeProduct(Product p);
-    public abstract boolean incrementProductQuantity(Product p,int quantity);
-    public abstract boolean decrementProductQuantity(Product p,int quantity);
+
 }

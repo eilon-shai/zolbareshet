@@ -1,13 +1,12 @@
 package org.es.zolbareshet.entities.users;
 
+import org.es.zolbareshet.queries.Parameter;
 import org.es.zolbareshet.queries.QueriesHandler;
+import org.es.zolbareshet.queries.SimpleQueryInvoker;
 import org.es.zolbareshet.utilities.Constants;
 
 import javax.faces.bean.ManagedBean;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
@@ -22,25 +21,19 @@ public class AddressBean {
 
     public AddressBean() {
             country = "Israel";
-          //  countries = Arrays.asList(allCountries);
-        countries = new LinkedList<>();
-        String[] parameters = {Constants.COUNTRIES_TABLE,Constants.COUNTRY_NAME_FIELD};
-        ResultSet rs= QueriesHandler.getResultQuery(Constants.GET_ALL_FROM_TABLE_QUERY,parameters);
-        try {
-            while (rs.next() ) {
-               countries.add(rs.getString(Constants.COUNTRY_NAME_FIELD));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+           // countries = Arrays.asList(allCountries);
+        countries = new ArrayList<String>();
+        ArrayList<QueriesHandler.ResultLine> rl = SimpleQueryInvoker.getAllCountries();
+        for(QueriesHandler.ResultLine l:rl){
+            countries.add((String)l.getContent().get(0));
         }
-
     }
 
     public AddressBean(String country, String city, String street, int houseNumber, int floorNumber, String zipCode) {
         this.country = country;
         this.city = city;
         this.street = street;
-        this.houseNumber = this.houseNumber;
+        this.houseNumber = houseNumber;
         this.floorNumber = floorNumber;
         this.zipCode = zipCode;
     }

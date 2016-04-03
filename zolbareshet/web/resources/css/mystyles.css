@@ -101,9 +101,9 @@ p {
     border:1px solid #1A87B9
 }
 
-.manger-section{
+.manager_page_section{
     position: absolute;
-    left: 180px;
+    left: 150px;
     top: 50px;
 }
 
@@ -117,10 +117,10 @@ p {
 }
 
 .even {
-    background-color: #666666;
+    background-color: lemonchiffon;
 }
 .odd {
-    background-color: #f8b920;
+    background-color: lightgoldenrodyellow;
 }
 
 

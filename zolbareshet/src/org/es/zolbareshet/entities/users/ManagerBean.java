@@ -5,28 +5,26 @@ import java.util.ArrayList;
 
 
 @ManagedBean
-public class ManagerBean extends User{
+public class ManagerBean extends CustomerBean{
+    private String role;
 
-    private String[] roles;
-    public ManagerBean(){
-        super();
-    }
+    private String[] roles = {"ADMINISTRATOR","STOREKEEPER"};
 
-    public ManagerBean(Name name, AddressBean addressBean, ArrayList<PhoneBean> phoneNumbers, Password password, String nickName, UserInfo userInfo, String[] roles) {
-        super( name, addressBean, phoneNumbers, password, nickName, userInfo);
-        this.roles = roles;
-    }
 
     public String[] getRoles() {
         return roles;
     }
 
-    public void setRoles(String[] roles) {
-        this.roles = roles;
+    public String getRole() {
+        return role;
     }
 
-    public String register(){
-        return "";
+    public void setRole(String role) {
+        this.role = role;
     }
-
+    public void addPhone(){
+        if (getPhonesList().size()<2){
+            getPhonesList().add(new PhoneBean());
+        }
+    }
 }
