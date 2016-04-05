@@ -4,7 +4,7 @@
         xmlns:h="http://xmlns.jcp.org/jsf/html"
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <p class="sectionTytle"> Server.log</p>
-    <ui:repeat value="#{customerBean.logger.readLog()}" var="line">
+    <ui:repeat value="#{userBean.logger.readLog()}" var="line">
         <h:outputText value="#{line}"/>
         <br />
     </ui:repeat>
