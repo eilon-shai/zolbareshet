@@ -56,7 +56,8 @@ public class Cart extends AbstractOrder{
     }
 
     private class CartDisposer extends Service{
-        private long DAYS_BETWEEN_CART_DISPOSER_RUNS = Long.parseLong(prop.getProperty(Constants.DAYS_BETWEEN_CART_DISPOSER_RUNS_PROPERTY,"1"));
+        private int DAYS_BETWEEN_CART_DISPOSER_RUNS;
+        private int CART_EXPIRES_AFTER;
         private boolean keepRunning=true;
 
         public CartDisposer(String name){
@@ -86,9 +87,11 @@ public class Cart extends AbstractOrder{
         }
 
         public void runOnce(){
-            ArrayList<QueriesHandler.ResultLine> userWithCartsList = SimpleQueryInvoker.GET_ALL_USERS_WITH_CARTS;//list of (userName,cartCreationDate) pairs
+            DAYS_BETWEEN_CART_DISPOSER_RUNS = Integer.parseInt(prop.getProperty(Constants.DAYS_BETWEEN_CART_DISPOSER_RUNS_PROPERTY,"1"));
+            CART_EXPIRES_AFTER = Integer.parseInt(prop.getProperty(Constants.CART_EXPIRES_AFTER_PROPERTY,"14"));
+            ArrayList<QueriesHandler.ResultLine> userWithCartsList = SimpleQueryInvoker.getAllUsersWithCarts();//list of (userName,cartCreationDate) pairs
             for (QueriesHandler.ResultLine line :  userWithCartsList){
-                if (System.currentTimeMillis() - Long.parseLong(line.getContent().get(2)) > Constants.ORDER_EXPIRE_AFTER){
+                if (System.currentTimeMillis() - Long.parseLong(line.getContent().get(2)) > CART_EXPIRES_AFTER*1000*60*60*24){ //two weeks
                     discard(line.getContent().get(2), discardCause.EXPIRED);
                 }
             }

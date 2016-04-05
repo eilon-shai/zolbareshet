@@ -67,6 +67,9 @@ public static ArrayList<ResultLine> qHandler(String query, Parameter[] parameter
                         case DATE:
                             prep.setDate(p.getIndex(),(Date) p.getObject());
                             break;
+                        case BOOLEAN:
+                            prep.setBoolean(p.getIndex(),(Boolean) p.getObject());
+                            break;
                     }
                 }
             }
@@ -119,8 +122,9 @@ public static ArrayList<ResultLine> qHandler(String query, Parameter[] parameter
                             line.add(((Date)rs.getDate(i + 1)).toString());
                             break;
                     }
-                result.add(new ResultLine(line));
+
                 }
+                result.add(new ResultLine(line));
             }
 
         } catch (SQLException e) {

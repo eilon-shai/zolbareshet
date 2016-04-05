@@ -5,6 +5,7 @@ import org.es.zolbareshet.queries.QueriesHandler;
 import org.es.zolbareshet.queries.SimpleQueryInvoker;
 import org.es.zolbareshet.utilities.Constants;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +20,9 @@ public class AddressBean {
     private String zipCode;
     private List<String> countries;
 
-    public AddressBean() {
-            country = "Israel";
+    @PostConstruct
+    public void init() {
+        country = "Israel";
            // countries = Arrays.asList(allCountries);
         countries = new ArrayList<String>();
         ArrayList<QueriesHandler.ResultLine> rl = SimpleQueryInvoker.getAllCountries();
@@ -29,14 +31,6 @@ public class AddressBean {
         }
     }
 
-    public AddressBean(String country, String city, String street, int houseNumber, int floorNumber, String zipCode) {
-        this.country = country;
-        this.city = city;
-        this.street = street;
-        this.houseNumber = houseNumber;
-        this.floorNumber = floorNumber;
-        this.zipCode = zipCode;
-    }
 
 
     public int getHouseNumber() {

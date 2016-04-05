@@ -16,7 +16,8 @@ public class Constants {
     public static final String ENCRYPTED_PASSWORD_PROPERTY ="encrypted-password";
     public static final String PORT_PROPERTY = "port";
     public static final String DAYS_BETWEEN_CART_DISPOSER_RUNS_PROPERTY = "days-between-cart-disposer";
-
+    public static final String CART_EXPIRES_AFTER_PROPERTY = "days-to-hold-open-carts";
+    public static final String TIME_ZONE_PROPERTY ="time-zone";
     //--------QUERIES------------------------------------
 
     public static final String CHECKING_NEW_USER_NICKNAME_REGISTRATION_QUERY="";
@@ -25,7 +26,10 @@ public class Constants {
     public static final String GET_ALL_COUNTRIES_QUERY= "SELECT * FROM countries ORDER BY countriename ASC" ;
     public static final String DELETE_USER_CART_QUERY ="";
     public static final String GET_ALL_USERS_WITH_CARTS_QUERY = "";
-
+    public static final String GET_ALL_SUPER_USERS_QUERY="SELECT u.username, p.phonenumber FROM users u,phones p WHERE u.username=p.username AND" +
+                                                              " (p.phonenumber = (SELECT MIN(p2.phoneNumber) FROM phones p2 WHERE u.username=p2.username)) ORDER BY username";
+    public static final String GET_SUPERUSER_FIELDS = "SELECT username, firstname, lastname, password, email, role FROM users WHERE username=?";
+    public static final String GET_ALL_USER_PHONES = "SELECT * FROM phones WHERE username=?";
 
     //--------------DATABASE FIELDS-----------------------
 
@@ -49,12 +53,12 @@ public class Constants {
 
 
     //--------------PAGES NAMES---------------------------
-    public static final String REGISTRATION_PAGE="accounting/registration";
-    public static final String HOME_PAGE="result";
-    public static final String MANAGEMENT_PAGE="management/management";
+    public static final String REGISTRATION_PAGE="/accounting/registration";
+    public static final String MANAGEMENT_PAGE="/management/management";
+    public static final String FORBIDDEN_PAGE ="forbiddenPage";
+    public static final String MAIN_PAGE = "main";
+    public static final String NEW_SUPER_PAGE = "/management/newSuperuser";
 
-    //--------------orders--------------------------------
-    public static final long ORDER_EXPIRE_AFTER = 1000*60*60*24*14; //two weeks
 
 
 

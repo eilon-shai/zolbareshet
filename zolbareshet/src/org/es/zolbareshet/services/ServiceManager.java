@@ -6,7 +6,6 @@ import java.util.ArrayList;
 /**
  * Created by eilons on 4/3/2016.
  */
-@ManagedBean
 public class ServiceManager {
 
     private static ArrayList<Service> services = new ArrayList<>();
@@ -21,7 +20,7 @@ public class ServiceManager {
         });
     }
 
-    public ArrayList<Service> getServicesList(){
+    public static ArrayList<Service> getServicesList(){
         return services;
     }
 

@@ -4,25 +4,31 @@
         xmlns:h="http://xmlns.jcp.org/jsf/html"
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:panelGrid columns="7" style="margin-left:  50px;">
-        <h:commandButton id="logButton" class="styled-button" value="open server log file" action="#{managerPageHelperBean.setShowLogSection()}"/>
+        <h:commandButton  id="logButton" class="#{managerPageNavigation.showLogSection?'styled-pressed-button':'styled-button'}" value="open server log file" action="#{managerPageNavigation.setShowLogSection()}">
+            <f:ajax render="@form"/>
+        </h:commandButton>
         <h:outputText/>
-        <h:commandButton id="configButton" class="styled-button" value="open server configuration file" action="#{managerPageHelperBean.setShowConfigurationSection()}"/>
+        <h:commandButton id="configButton" class="#{managerPageNavigation.showConfigurationSection?'styled-pressed-button':'styled-button'}" value="open server configuration file" action="#{managerPageNavigation.setShowConfigurationSection()}">
+            <f:ajax render="@form"/>
+        </h:commandButton>
         <h:outputText/>
-        <h:commandButton id="servicesButton" class="styled-button" value="show running services" action="#{managerPageHelperBean.setShowServiceSection()}"/>
+        <h:commandButton id="servicesButton" class="#{managerPageNavigation.showServiceSection?'styled-pressed-button':'styled-button'}" value="show running services" action="#{managerPageNavigation.setShowServiceSection()}">
+            <f:ajax render="@form"/>
+        </h:commandButton>
         <h:outputText/>
     </h:panelGrid>
     <div class="manager_page_section">
-        <h:panelGroup rendered="#{managerPageHelperBean.showLogSection}">
+        <h:panelGroup rendered="#{managerPageNavigation.showLogSection}">
             <ui:include src="log.xhtml" />
         </h:panelGroup>
     </div>
     <div class="manager_page_section">
-        <h:panelGroup rendered="#{managerPageHelperBean.showConfigurationSection}">
+        <h:panelGroup rendered="#{managerPageNavigation.showConfigurationSection}">
             <ui:include src="config.xhtml" />
         </h:panelGroup>
     </div>
     <div class="manager_page_section">
-    <h:panelGroup rendered="#{managerPageHelperBean.showServiceSection}">
+    <h:panelGroup rendered="#{managerPageNavigation.showServiceSection}">
         <ui:include src="services.xhtml" />
     </h:panelGroup>
 </div>

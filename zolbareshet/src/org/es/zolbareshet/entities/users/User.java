@@ -3,11 +3,13 @@ package org.es.zolbareshet.entities.users;
 import org.es.zolbareshet.logging.Logger;
 import org.es.zolbareshet.logging.LoggerFactory;
 
+import javax.faces.bean.ManagedProperty;
 import java.util.ArrayList;
 
 
 public abstract class User {
     private final int MAXIMUM_NUMBER_OF_PHONES=4;
+    private boolean isActive=true;
     private Name name;
     private AddressBean addressBean;
     private ArrayList<PhoneBean> phonesList;
@@ -55,6 +57,13 @@ public abstract class User {
         this.phonesList = phonesList;
     }
 
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 
     public Name getName() {
         return name;
